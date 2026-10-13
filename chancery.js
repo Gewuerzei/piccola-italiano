@@ -130,3 +130,7 @@ function chanceryAction(name,btn){
  }
 }
 document.addEventListener('submit',e=>{if(e.target?.matches?.('[data-chancery-answer]')){e.preventDefault();chancerySubmitPuzzle(e.target)}});
+
+/* Return-to-case bridge from the existing etymology archive. */
+const chanceryOriginalArchaeologyView=archaeologyView;
+archaeologyView=function(){const html=chanceryOriginalArchaeologyView();return ui.chanceryReturn?'<div class="chancery-wrap"><button class="ch-link" data-action="chancery-back">↩ 返回文书院的语言鉴定台</button></div>'+html:html;};
