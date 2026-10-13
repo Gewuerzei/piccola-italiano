@@ -109,3 +109,13 @@ const DRIVE_QUIZ = [
  ['La patente consente di ignorare i limiti di velocità.',false,10,'持有驾照不意味着免除速度限制。'],
  ['Con cattiva visibilità bisogna adattare la velocità alle condizioni.',true,6,'驾驶速度应适应路况、天气与能见度。']
 ].map(([prompt,correct,day,why],i)=>({id:'drive-'+String(i+1).padStart(2,'0'),prompt,correct,day,why}));
+
+// v0.4 verified etymology anchors; detail cards supplied by archaeology.js.
+EXTRA_SEED.push(
+  {id:'w-ciao',kind:'word',title:'ciao',meaning:'朋友见面或道别时的招呼；源于威尼托地方问候。',example:'Ciao! Come stai?',tags:['Veneto','A1','词源'],links:['sc-bar','w-toso']},
+  {id:'w-semaforo',kind:'word',title:'semaforo',meaning:'交通信号灯；由希腊语构词成分形成，词形受到法语 sémaphore 的影响。',example:'Il semaforo è rosso.',tags:['驾考','A2','词源'],links:['sc-guida2','w-precedenza']},
+  {id:'w-patente',kind:'word',title:'patente',meaning:'阴性名词：驾照、许可证。词源可追溯到“公开的文书”。',example:'Sto studiando per prendere la patente.',tags:['驾考','A2','词源'],links:['sc-guida2']},
+  {id:'w-obbligare',kind:'word',title:'obbligare',meaning:'动词：使负有义务、强制。拉丁词根有“约束／捆绑”意味。',example:'Il segnale obbliga a fermarsi.',tags:['驾考','B1','词源'],links:['sc-guida2']},
+  {id:'w-ingresso',kind:'word',title:'ingresso',meaning:'阳性名词：进入、入口、入场权。',example:'L’ingresso è libero.',tags:['生活','A2','词源'],links:['sc-documento']},
+  {id:'w-entusiasmo',kind:'word',title:'entusiasmo',meaning:'阳性名词：热情、热忱；古希腊语最初指神灵感召的状态。',example:'Studio con entusiasmo!',tags:['B1','词源'],links:['s-ultimamente']}
+);
