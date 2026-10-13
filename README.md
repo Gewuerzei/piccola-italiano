@@ -1,45 +1,23 @@
-# 🇮🇹 Piccola Italiano · v0.2.0
+# Piccola Italiano v0.3.0 · Storie & Patente
 
-**Independent, local-first Italian-learning PWA** for Pietro. No dependency on the Cassola inventory/staff repository, its GitHub Pages, or Supabase.
+Independent local-first PWA, built for learning Italian from real contexts. **Unrelated to Cassola**.
 
-## What is in v0.2.0
+## New in v0.3
 
-- 44 interconnected knowledge items (words, grammar, sentences, scenes) plus 25 scored language questions.
-- 9 real-life role-play scenes, including 6 newly added stories (sushi shortage, Bassano small talk, right-of-way discussion, shift swap, car mechanic, neighbor complaint).
-- 2–3 consecutive turns in the new stories. Write your reply, read example, self-grade each turn. Completed transcript and summary saved locally. **No AI grading.**
-- Veneto words such as *schei*, *toso*, *ciacole*, *òcio* and *mona* have regional/register notes. Never treat slang as required formal Italian.
-- **Operazione Patente B:** 14-day study plan with explicit start button, 28 manual completion checks, progress indicator and fixed end date based on the user's local date.
-- 40 original educational true/false driving-theory examples, with a **30-question / 20-minute** random timed simulation, a 3-error threshold, automatic timeout, report and past results.
-- Driving-program vocabulary is connected to the language knowledge graph where possible.
-- Spaced review, mistake recording for language exercises, IndexedDB-first storage, JSON backup and non-destructive import merge including mission history.
-- Responsive mobile/desktop, app manifest, offline cached shell, light/dark mode.
-
-**Important:** The 40 driving questions are original study examples, **not the official ministerial exam question bank**. Finishing the 14 days or passing these demo simulations is not evidence of exhaustive theory coverage. Review the full updated question bank from the motor vehicle authority or an approved autoscuola.
-
-Italian authority exam format: 30 vero/falso questions, 20 minutes, no more than 3 mistakes. Official reference: https://www.ilportaledellautomobilista.it/web/portale-automobilista/foglio-rosa-e-prove-new
-
-## Local preview on a computer
-
-Unzip. Enter the `piccola-italiano-v0.2.0/` folder and run:
-
-```bash
-python -m http.server 8080
-```
-
-Open `http://localhost:8080/`. On iPhone you need an HTTPS deployment such as GitHub Pages and **Safari → Share → Add to Home Screen**. Simply tapping the ZIP does not install a PWA.
+- 🎲 Six original, three-beat branching-response stories: weekend sushi shift, Veneto café, driving instructor, Questura, neighbors and Timo's veterinarian.
+- Choices display concrete linguistic feedback; Italian voice read-aloud uses the device's native speech synthesizer (may require an installed Italian voice).
+- Capped, repeat-safe XP and badges, no punishment for skipped days or failure. Two-way links between stories and existing words/grammar.
+- Original freeform writing/roleplay and 14-day challenge remain available.
+- 🏛️ Driving-theory bank import interface. MIT 2024 source and licence attribution are included. File importer supports **CSV/TSV/JSON with explicit question-and-answer fields**; conservatively parses a few delimited TXT patterns, but has **not yet been verified against MIT's raw TXT layout**. Unrecognized formats are rejected without replacing local data. User must validate provenance and relevance of any imported bank.
+- 30-question / 20-minute simulation draws from imported questions when at least 30 valid records are present, otherwise the 40 original demo questions. This is **practice**, not a verified simulation of the official sampling algorithm or current bank.
+- Old IndexedDB database schema retained (version 1); new `adventure` and `mission.bank` data are additive. Backups merge new fields without resetting previous work.
 
 ## Deployment
 
-See [DEPLOY_GITHUB.md](DEPLOY_GITHUB.md). A **new** repository is required; do not upload into `Gewuerzei/-Piccola`.
+Upload the files **at repository root** of the independent repo `Gewuerzei/piccola-italiano`. Enable Pages `main` + `/root`. Live URL: https://gewuerzei.github.io/piccola-italiano/ .
 
-## Backups & migration
+## Data and legal
 
-The on-device database is `piccola-italiano`, object store `data`, key `state`, data schema version `1` (extended additively with `mission`). An old v0.1 backup imports into v0.2; an updated v0.2 backup also includes mission history. Export frequently, especially on iOS. Backups can include personal text entered into scenes and should **not** be committed to a public repository.
+All personal progress stored in browser IndexedDB with localStorage fallback. Export JSON before clearing Safari website data; never commit personal backups to a public repository. MIT link: https://www.mit.gov.it/normativa/circolare-protocollo-19281-del-05072024. MIT site legal notice defaults to CC BY 3.0 unless otherwise specified: https://www.mit.gov.it/note-legali .
 
-Manual checkmarks indicate completion only by user's own confirmation. They do not track the ministerial full question bank. Study challenge starts on pressing **正式启动14天挑战**, not on opening/installing the app. It does not wipe records upon expiration.
-
-## Known limitations
-
-- Browser-embedded interaction tests passed, but navigation to `localhost` or `file://` was blocked in the test sandbox. Actual service-worker installation, IndexedDB persistence, background timer behavior and iOS Safari still require real-device validation after HTTPS deployment.
-- No voice recognition, audio lessons, AI feedback, external question-bank synchronization or cloud backup in this version.
-- An active mock exam does not survive page reload (finished exam results do persist if browser storage works). Do not rely on a demo score alone.
+**Restrictions:** Nothing here guarantees the current official written examination question list is identical to the 2024 publication. Ask driving school / Portale dell'Automobilista for current bank. No AI automatic grading and no official import auto-sync.
