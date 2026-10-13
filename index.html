@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#11243b" />
+  <meta name="description" content="Piccola Italiano：本地优先、知识点关联的私人意大利语学习 PWA。" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Piccola Italiano · 我的意大利语学校</title>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="主导航">
+      <div class="brand"><span class="brand-icon">P<span class="brand-dot">.</span></span><div><strong>Piccola</strong><small>ITALIANO</small></div></div>
+      <div class="sidebar-caption">LA TUA SCUOLA</div>
+      <nav id="desktop-nav" class="nav" aria-label="学习模块"></nav>
+      <div class="side-foot"><span class="status-dot"></span> Local-first · Offline-ready <small>v0.2 · Studio</small></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mini">P.</span><span>Piccola <b>Italiano</b></span></div>
+        <div class="breadcrumb" id="breadcrumb">La mia scuola</div>
+        <div class="top-actions"><span id="storage-status" title="数据保存状态">正在加载…</span><button class="icon-button" id="theme-btn" aria-label="切换深浅色主题" title="切换主题">☾</button></div>
+      </header>
+      <main id="view" tabindex="-1" aria-live="polite"></main>
+      <footer class="page-footer">Fatto con cura, per imparare davvero. <span>🇮🇹</span></footer>
+    </div>
+  </div>
+  <nav id="bottom-nav" class="bottom-nav" aria-label="手机导航"></nav>
+  <dialog id="add-dialog" class="modal">
+    <form id="add-form" method="dialog">
+      <div class="modal-head"><div><span class="eyebrow">NUOVO ELEMENTO</span><h2>添加知识点</h2></div><button type="button" class="icon-button" data-action="close-modal" aria-label="关闭">✕</button></div>
+      <label>知识类型<select name="kind" required><option value="word">词汇 · Vocabolario</option><option value="grammar">语法 · Grammatica</option><option value="sentence">例句 · Frase</option></select></label>
+      <label>意大利语标题 <span class="required">*</span><input name="title" maxlength="110" required placeholder="例如：sbrigarsi" /></label>
+      <label>中文解释 <span class="required">*</span><textarea name="meaning" maxlength="550" rows="3" required placeholder="解释、用法或翻译"></textarea></label>
+      <label>意大利语例句<input name="example" maxlength="220" placeholder="例如：Devo sbrigarmi." /></label>
+      <label>关联现有知识点<select name="relation" id="relation-select"><option value="">不关联（以后也能添加）</option></select></label>
+      <p class="helper">添加后自动保存在本机，可随时导出备份。关联会在两个知识点之间同时建立。</p>
+      <div class="dialog-actions"><button type="button" class="btn secondary" data-action="close-modal">取消</button><button class="btn primary" type="submit">保存知识点</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script defer src="./content.js"></script>
+  <script defer src="./mission.js"></script>
+  <script defer src="./app.js"></script>
+</body>
+</html>
