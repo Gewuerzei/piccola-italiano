@@ -1,4 +1,4 @@
-# Piccola Italiano v0.4.0 · Storie & Patente
+# Piccola Italiano v0.5.0 · Storie & Patente
 
 Independent local-first PWA, built for learning Italian from real contexts. **Unrelated to Cassola**.
 
@@ -28,3 +28,11 @@ All personal progress stored in browser IndexedDB with localStorage fallback. Ex
 - 🔐 Two three-stage puzzle cases: Bassano's letter and a driving license dossier. Typed answers plus ordered reconstruction, clues, optional hints, answer checking, solved badges. This is **not** just a choice quiz.
 - Puzzle solve state is stored locally under `mysteries` and included in JSON backup merging. No data wipe, schemaVersion stays 1, no forced deadlines, no unlimited points farming.
 - `archaeology.js` is loaded before `app.js`, included in offline cache v004. Treccani links require Internet; authored learning content runs offline.
+## v0.5: 词根推理实验室 · 四宗新案
+
+- Added 16 etymology dossiers (24 total), each with authored Chinese etymology explanations and linked Treccani references. These are linguistic hints, not copied dictionary definitions.
+- Added 4 three-stage clue cases (6 cases total) and 12 **typed** root-reconstruction challenges. Answers are normalized and verified; optional hints reveal information, not automatic AI grading.
+- Added 15 linked word entries (library seed 65 total), 15 additional language drills (40 total). Original 14-day driving mission and separate official-bank importer are unchanged; the expansion is **not** an official exam-bank import.
+- Quest state is additive under `state.mysteries.inferences`. Existing IDB schema v1 and existing progress stay intact. JSON backup import now merges first successful root solves without erasing local successes.
+- Scripts: `archaeology.js` followed by `excavation.js`, then `app.js`; service worker cache `piccola-italiano-v005`.
+- Tests: source JS parsing for all changed scripts and synthetic action tests for root answers + persistence passed. Real iPhone PWA remains to be tested.
