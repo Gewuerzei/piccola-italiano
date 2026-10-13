@@ -1,56 +1,56 @@
-# Piccola Italiano v0.7.0 · Storie & Patente
+# Piccola Italiano 🇮🇹
 
-Independent local-first PWA, built for learning Italian from real contexts. **Unrelated to Cassola**.
+**意大利语学习 PWA · v0.7.0**  
+[打开应用](https://gewuerzei.github.io/piccola-italiano/) · [源码仓库](https://github.com/Gewuerzei/piccola-italiano)
 
-## New in v0.3
+一款完全独立于 Cassola 餐馆生产系统的 **local-first** 意大利语学习应用。用生活会话、词源考古、文字谜题、驾考术语与城邦文书游戏练习意大利语。
 
-- 🎲 Six original, three-beat branching-response stories: weekend sushi shift, Veneto café, driving instructor, Questura, neighbors and Timo's veterinarian.
-- Choices display concrete linguistic feedback; Italian voice read-aloud uses the device's native speech synthesizer (may require an installed Italian voice).
-- Capped, repeat-safe XP and badges, no punishment for skipped days or failure. Two-way links between stories and existing words/grammar.
-- Original freeform writing/roleplay and 14-day challenge remain available.
-- 🏛️ Driving-theory bank import interface. MIT 2024 source and licence attribution are included. File importer supports **CSV/TSV/JSON with explicit question-and-answer fields**; conservatively parses a few delimited TXT patterns, but has **not yet been verified against MIT's raw TXT layout**. Unrecognized formats are rejected without replacing local data. User must validate provenance and relevance of any imported bank.
-- 30-question / 20-minute simulation draws from imported questions when at least 30 valid records are present, otherwise the 40 original demo questions. This is **practice**, not a verified simulation of the official sampling algorithm or current bank.
-- Old IndexedDB database schema retained (version 1); new `adventure` and `mission.bank` data are additive. Backups merge new fields without resetting previous work.
+## 学习模式
 
-## Deployment
+| 模块 | 当前内容 | 用途 |
+| --- | --- | --- |
+| 知识库与复习 | 关联词汇、语法、例句及场景；本机间隔复习 | 建立可重复使用的语言知识 |
+| 互动冒险 | 生活场景分支、意大利语会话和自我练习 | 从识别正确表达走向自己造句 |
+| 词源考古 | 36份有词典来源链接的词源档案 | 追查拉丁语、希腊语、Veneto 等语源 |
+| 词源谜案 | 9宗连续谜题，另有12关词根推理 | 输入词形、排序线索、验证推断 |
+| 中古城邦文书院 | 6宗虚构案件：24份物证、18段证词、12道条款解码 | 在调查与裁决中理解意大利语 |
+| Operazione Patente B | 14天复习计划、示例题与题库导入入口 | 驾考术语训练及模拟练习 |
 
-Upload the files **at repository root** of the independent repo `Gewuerzei/piccola-italiano`. Enable Pages `main` + `/root`. Live URL: https://gewuerzei.github.io/piccola-italiano/ .
+**关于考试题库：** 当前仓库没有内置完整、经校验的意大利官方理论考试题库。原有40道驾考示例题是自编练习，不应标注为官方真题。导入器可以读取带有明确题干和答案字段的受支持文件；MIT 原始 TXT 尚未完成真实文件格式验证，不能声称官方题库已经成功导入。模拟考试也不应被宣传为已经复现官方抽题算法。
 
-## Data and legal
+**关于历史内容：** 中古城邦剧情是虚构设定，题目中的意大利语为面向现代学习者的教学文本，不是声称出土的中世纪原始文书。词源档案为自行编写的解释，附有外部词典出处，不复制外部词典全文。
 
-All personal progress stored in browser IndexedDB with localStorage fallback. Export JSON before clearing Safari website data; never commit personal backups to a public repository. MIT link: https://www.mit.gov.it/normativa/circolare-protocollo-19281-del-05072024. MIT site legal notice defaults to CC BY 3.0 unless otherwise specified: https://www.mit.gov.it/note-legali .
+## 如何使用
 
-**Restrictions:** Nothing here guarantees the current official written examination question list is identical to the 2024 publication. Ask driving school / Portale dell'Automobilista for current bank. No AI automatic grading and no official import auto-sync.
+1. 用 iPhone Safari 打开上方应用链接。可用“分享 → 添加到主屏幕”安装。
+2. 从首页选择学习模块；点开知识库项目可查看例句及关联词源。
+3. 城邦文书院需调查物证、询问证人、完成语言解码，再选择一次正式裁决。
+4. 在“我的”中定期 **导出 JSON 备份**。删除网页数据或卸载 PWA 可能丢失本地学习记录。
 
-## v0.4: Words through time + actual mysteries
+## 数据与技术
 
-- 🏛️ Eight manually checked etymology dossiers with explicit source links to Treccani. Differentiate direct inheritance, modern derivation and calques/models; no claims of original Greek automobiles. Six new linked word entries in the main library.
-- 🔐 Two three-stage puzzle cases: Bassano's letter and a driving license dossier. Typed answers plus ordered reconstruction, clues, optional hints, answer checking, solved badges. This is **not** just a choice quiz.
-- Puzzle solve state is stored locally under `mysteries` and included in JSON backup merging. No data wipe, schemaVersion stays 1, no forced deadlines, no unlimited points farming.
-- `archaeology.js` is loaded before `app.js`, included in offline cache v004. Treccani links require Internet; authored learning content runs offline.
-## v0.5: 词根推理实验室 · 四宗新案
+- 纯前端静态站点，GitHub Pages 部署，离线资源由 `sw.js` 缓存。
+- 学习记录默认存在设备 IndexedDB：`piccola-italiano` / store `data` / key `state`，`schemaVersion=1`；不可用时降级至 localStorage。
+- 无账号登录、云端学习记录同步，也**不会**通过 GitHub 自动上传用户本地数据。
+- JSON 备份支持非破坏性合并。**严禁通过清空 IndexedDB/localStorage 来处理升级或故障。**
+- 公共仓库不存放私人学习备份、授权令牌、密码或用户数据。
+- 意大利语朗读功能依赖设备本地语音服务；实际设备是否提供该语音需单独测试。
 
-- Added 16 etymology dossiers (24 total), each with authored Chinese etymology explanations and linked Treccani references. These are linguistic hints, not copied dictionary definitions.
-- Added 4 three-stage clue cases (6 cases total) and 12 **typed** root-reconstruction challenges. Answers are normalized and verified; optional hints reveal information, not automatic AI grading.
-- Added 15 linked word entries (library seed 65 total), 15 additional language drills (40 total). Original 14-day driving mission and separate official-bank importer are unchanged; the expansion is **not** an official exam-bank import.
-- Quest state is additive under `state.mysteries.inferences`. Existing IDB schema v1 and existing progress stay intact. JSON backup import now merges first successful root solves without erasing local successes.
-- Scripts: `archaeology.js` followed by `excavation.js`, then `app.js`; service worker cache `piccola-italiano-v005`.
-- Tests: source JS parsing for all changed scripts and synthetic action tests for root answers + persistence passed. Real iPhone PWA remains to be tested.
+## 项目维护文书
 
-## v0.6 · Codex parchment edition
+| 文件 | 只负责 |
+| --- | --- |
+| [AGENTS.md](AGENTS.md) | AI/自动化施工规则和安全边界 |
+| [PROJECT_HANDOFF.md](PROJECT_HANDOFF.md) | 当前模块、状态、风险与交接 |
+| [CHANGELOG.md](CHANGELOG.md) | 版本变更历史 |
+| [DEPLOY_GITHUB.md](DEPLOY_GITHUB.md) | 已有 Pages 项目的维护、部署和验收 |
 
-- New optional global third theme: light → dark → Codex (paper, wax seals, illuminated-document styling). Select from the top-right appearance toggle or Settings; stored in the existing settings object.
-- Twelve original etymology dossiers with Treccani source links, emphasizing parchment, seals, notaries, charters, edicts, and archives. Avoid copying dictionary definitions.
-- Three additional three-stage, typed/sequence mysteries set in a medieval scriptorium, at a city gate and in a notary's vault (nine cases total). These are fictional teaching scenarios, not claims about a specific historical event.
-- Twelve additional linked vocabulary entries and ten language drills. v0.5 root-inference features, stories and all existing data remain.
-- Added `codex.js` after `excavation.js` and before `app.js`; service worker cache `piccola-italiano-v006`.
-- No change to the official driving bank import status; full MIT question list is **not** imported.
+后续版本功能沿革请看 CHANGELOG，不把每次修改都重复堆进 README。
 
-## v0.7 · 城邦文书院超大杯
+## 外部出处
 
-- Six playable city-state cases set in medieval-flavored fictional Italy, using readable **modern** Italian learning text for A2–B2. Evidence, testimony, language proofs and first-judgment outcomes are preserved locally.
-- Per case: 4 collectable evidence records, 3 witness statements, 2 typed clause/grammar tests, 3 alternative judgments, meaningful post-judgment feedback; all cases independent and accessible without forced deadlines.
-- New dictionary/grammar-linked language pack: 12 vocabulary cards and 12 optional drills. Main archive: old 36 etymology dossiers, 9 word mysteries and 12 root-inference puzzles preserved.
-- Visually distinct parchment screen with a dossier map, seals, archival notebook, dynamic civic ledger, progress checkpoints and mobile-responsive panels.
-- First verdict alone counts in city reputation/trade/order ledger. This is a game, not legal or historical evidence; text is modern pedagogical paraphrase.
-- The personal record stays local (IndexedDB v1); backups merge first-valid verdicts and never delete older student data. `chancery.js` pre-cached by service worker v007.
+- [MIT · 2024年理论考试题库通函](https://www.mit.gov.it/normativa/circolare-protocollo-19281-del-05072024)
+- [MIT 网站法律声明](https://www.mit.gov.it/note-legali)
+- [Treccani 意大利语词典](https://www.treccani.it/vocabolario/)
+
+**仓库：** `Gewuerzei/piccola-italiano`。与 Cassola 的 `Gewuerzei/-Piccola` 完全分离。
