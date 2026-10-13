@@ -100,3 +100,83 @@ body.codex .conversation textarea,body.codex .search-bar{
 body.codex .adv-feedback,body.codex .notice {color:#5a3b22;background:#f1dfb9;border-color:#cba26c}
 body.codex .root-quest-card,body.codex .root-quest-banner {border-color:#cba877}
 @media(max-width:700px){body.codex{font-size:16px}}
+
+
+/* v0.7 · CANCELLERIA · archival adventure: scoped parchment skin, even with default theme */
+.chancery-wrap{--ch-ink:#44301f;--ch-rust:#8a4d30;--ch-seal:#843d30;--ch-edge:#b7915e;--ch-paper:#f6eccf;--ch-paper-alt:#ead7ae;--ch-light:#fff9e9;max-width:1020px;margin:0 auto 24px;color:var(--ch-ink);font-family:Georgia,"Times New Roman","Noto Serif SC","Songti SC",serif}
+.chancery-wrap *{box-sizing:border-box}
+.chancery-wrap button{font-family:inherit}
+.ch-masthead{padding:38px 28px 35px;text-align:center;border-radius:23px;border:3px double #c6a675;background:radial-gradient(ellipse at 50% 14%,#fff7df,#ecd7ad);box-shadow:0 12px 34px #42290d20, inset 0 0 0 8px #fff7e04f;position:relative;overflow:hidden}
+.ch-masthead:before{content:"✦  ⚜  ✦";display:block;letter-spacing:.75em;font-size:20px;color:#966a42;margin-bottom:11px}
+.ch-masthead>span,.ch-eyebrow,.ch-mark{letter-spacing:.18em;text-transform:uppercase;font-size:10px;color:#8b633e;font-weight:800}
+.ch-masthead h1{font-size:clamp(28px,5.1vw,47px);letter-spacing:.12em;margin:13px 0;color:#4b301c}
+.ch-masthead p{line-height:1.85;margin:10px auto;color:#61462e;max-width:640px;font-size:14px}
+.ch-masthead small{display:block;color:#92765b;margin-top:13px;font-size:11px}
+.ch-ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:15px 0}
+.ch-ledger>div{display:flex;flex-direction:column;align-items:center;gap:5px;border:1px solid #c7a877;border-radius:12px;padding:15px 5px;background:linear-gradient(150deg,#f9eed3,#eadab8)}
+.ch-ledger b{font-size:28px;color:#754621}.ch-ledger small{font-size:11px;color:#775c43}
+.ch-dispatch,.ch-mini-board{background:linear-gradient(115deg,#46342b,#704d35);color:#fbefd5;border:1px solid #876345;border-radius:15px;padding:19px 22px;margin:15px 0}
+.ch-dispatch h2{font-family:Georgia,serif;color:#ffedc9;margin:0 0 5px;font-size:19px}
+.ch-dispatch p{color:#e7d4b6;font-size:12px;line-height:1.7;margin:6px 0 12px}
+.ch-scores{display:flex;gap:8px;flex-wrap:wrap}.ch-scores span{font-size:11px;background:#ffffff17;border:1px solid #ffffff31;border-radius:50px;padding:6px 9px}
+.ch-case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.ch-case{display:flex;flex-direction:column;text-align:left;align-items:flex-start;gap:8px;min-width:0;padding:21px;border:1.5px solid #c2a06f;border-radius:16px;background:repeating-linear-gradient(3deg,#f5e8c8,#f5e8c8 5px,#f2e3c2 6px,#f2e3c2 7px);box-shadow:0 9px 21px #553b2017;transition:transform .15s,border-color .15s;color:#442d1e}
+.ch-case:hover{transform:translateY(-2px);border-color:#8b5832}
+.ch-case-number,.ch-label{color:#986f45;font-size:10px;letter-spacing:.14em;font-weight:850}
+.ch-case-icon{font-size:39px;line-height:1.2;margin:3px 0}.ch-case>b{font-size:21px;line-height:1.4}.ch-case>i{font-size:13px;color:#8b6246}
+.ch-case>small{font-size:11px;color:#916c4e}
+.ch-case p{font-size:12px;line-height:1.8;margin:5px 0 7px;flex:1;color:#66513c}
+.ch-case-status{display:block;color:#87481c;font-weight:800;font-size:12px;border-top:1px solid #c2a678;padding-top:12px;width:100%}
+.ch-docket-foot,.ch-fineprint{font-size:11px;line-height:1.75;opacity:.8}
+.ch-entry{display:flex;gap:16px;align-items:center;background:linear-gradient(115deg,#46342b,#806143);border:1px solid #9b7549;border-radius:21px;color:#fff4dc;padding:20px 21px;margin:18px 0;box-shadow:0 11px 25px #41270d1b}
+.ch-entry-crest{font-size:42px;color:#efd39a;min-width:56px;text-align:center}
+.ch-entry-main{flex:1}.ch-entry-main .ch-eyebrow{color:#f4c985}
+.ch-entry-main h2{font-size:21px;margin:7px 0 7px;color:#fff0cb}.ch-entry-main p{font-size:12px;line-height:1.65;color:#ecddc5;margin:0}
+.ch-entry-main .ch-meta{font-size:11px;color:#d9b583;margin-top:9px}
+.ch-cta{border:1px solid #d5b77b;background:#ead09c;border-radius:12px;color:#4e3118;font-size:12px;padding:12px 17px;font-weight:800;min-height:43px;white-space:nowrap}
+.ch-cta:hover{background:#fff0c1}
+.ch-link{border:1px solid #ceb289;background:#f5e7cc;color:#744b2b;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;margin-bottom:15px}
+.ch-docket-head{background:linear-gradient(115deg,#4a372d,#806044);border:1px solid #9f7952;border-radius:18px 18px 7px 7px;padding:22px 23px;color:#fff0d4}
+.ch-docket-head .ch-eyebrow{color:#e6c691}.ch-docket-head h1{font-size:clamp(22px,4.6vw,31px);margin:8px 0 5px;color:#fff2d9}.ch-docket-head p{font-size:12px;color:#e8d6b8;margin:0}
+.ch-step-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:11px 0 15px}
+.ch-step-tabs button{border:1px solid #cfb48b;background:#ead8b6;color:#65492d;border-radius:10px;padding:10px 13px;font-size:11px;flex:1;min-width:120px;font-weight:700}
+.ch-step-tabs button.active{background:#744830;color:#fff4da;border-color:#744830}
+.ch-parchment{background:radial-gradient(ellipse at 30% 0,#fff9e9,#f3e4bf 63%,#ead6ae);border:2px solid #bb9661;border-radius:14px;padding:clamp(17px,3vw,30px);min-height:270px;box-shadow:0 13px 28px #593e1d20,inset 0 0 0 6px #fffdf130;position:relative}
+.ch-parchment:before{content:"";position:absolute;inset:8px;border:1px dotted #bd985c7a;border-radius:8px;pointer-events:none}
+.ch-mark{text-align:center;display:block;margin-bottom:18px}
+.ch-parchment h2{font-size:clamp(20px,4vw,28px);margin:0 0 14px;line-height:1.45;color:#51351f}
+.ch-parchment p{line-height:1.78;font-size:13px;color:#5d4835}
+.ch-hist-roman{position:absolute;top:25px;right:35px;color:#c5ac80;font-size:48px;font-style:italic}
+.ch-story{font-size:14px!important}
+.ch-decree{border-left:4px solid #a77743;background:#fff9e67a;padding:17px 19px;margin:22px 0}
+.ch-decree>span{font-size:10px;letter-spacing:.08em;color:#9c7450}
+.ch-decree blockquote{border:0;padding:0;margin:16px 0;color:#54351e;font-size:clamp(19px,3vw,27px);font-style:italic;line-height:1.5}
+.ch-decree p{margin:4px 0;color:#7a5a3b}
+.ch-instruction{padding:10px 13px;background:#eed6ab9c;border-radius:9px}
+.ch-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.ch-evidence{display:flex;flex-direction:column;align-items:flex-start;min-width:0;text-align:left;border:1px solid #c6a573;border-radius:12px;padding:16px;background:linear-gradient(165deg,#fff9e8,#efdfba);color:#48301d;gap:11px}
+.ch-evidence>span{font-size:23px}.ch-evidence b{font-size:16px}.ch-evidence i{font-size:13px;line-height:1.6}.ch-evidence small{font-size:12px;line-height:1.6;color:#84684c}
+.ch-evidence.collected,.ch-witness.collected{border-color:#95713e;background:#e8d1a3;box-shadow:inset 0 0 0 2px #fff4d15a}
+.ch-witnesses{display:grid;gap:12px}.ch-witness{display:flex;align-items:flex-start;gap:14px;width:100%;text-align:left;border:1px solid #ceb487;border-radius:12px;background:linear-gradient(165deg,#fff9e8,#efdfba);padding:15px;color:#503826}
+.ch-avatar{font-size:23px;border-radius:40px;border:1px solid #c2a477;background:#faedd2;min-width:44px;height:44px;display:grid;place-items:center}
+.ch-witness>span:last-child{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ch-witness b{font-size:16px}.ch-witness i{font-size:14px;line-height:1.65}.ch-witness small{font-size:12px;color:#785b3c;line-height:1.65}
+.ch-puzzles{display:grid;gap:16px}.ch-puzzle{background:#fff9e57b;border:1px solid #cdb187;border-radius:14px;padding:17px}
+.ch-puzzle h3{font-size:16px;color:#523721;margin:10px 0}
+.ch-puzzle blockquote{font-size:18px;font-style:italic;line-height:1.55;border-left:3px solid #9f7145;margin:14px 0;padding-left:14px;color:#69452b}
+.ch-answer{display:flex;gap:9px}.ch-answer input{flex:1;min-width:0;border:1px solid #c5a475;border-radius:9px;padding:12px;background:#fffdf5;color:#432d1d;font-size:16px}.ch-answer button,.ch-choice{border:1px solid #8d5937;border-radius:9px;background:#8b5537;color:#fff4dd;font-weight:800;padding:12px}
+.ch-puzzle-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.ch-puzzle-links button{border:1px solid #c8ac7d;background:#f3e1bf;border-radius:8px;color:#77512b;padding:8px 10px;font-size:11px}
+.ch-hint,.ch-warning,.ch-success{background:#ead4a7;padding:10px 13px;border-radius:9px;font-size:12px!important}.ch-warning{background:#f1d1bd}.ch-success{background:#deebcd;color:#405927}
+.ch-mini-board{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:13px 16px;margin-top:12px}
+.ch-mini-board b{font-size:13px}.ch-mini-board span{font-size:11px;color:#f3dfbe;border:1px solid #a58568;border-radius:50px;padding:7px}
+.ch-lock{background:#e9dbbd;border:1px dashed #b58f5d;border-radius:12px;padding:18px;line-height:1.7;font-size:13px}
+.ch-milestones{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.ch-milestones span{background:#f4e6c7;border-radius:20px;padding:5px 8px;font-size:11px}
+.ch-verdict-options{display:grid;gap:10px;margin-top:20px}
+.ch-choice{display:flex;align-items:center;gap:14px;text-align:left;font-size:13px;line-height:1.6;background:#f9e9c7;color:#4b311b;border-color:#bb9569}
+.ch-choice>span{font-size:24px}.ch-choice:hover{background:#ecd29c}
+.ch-seal{display:grid;place-items:center;background:#853d36;border:5px double #d3a37e;color:#f7dcb4;border-radius:100%;width:64px;height:64px;float:right;transform:rotate(14deg);box-shadow:0 5px 13px #642c272f}
+.ch-outcome{border:1px solid #b07c62;background:#efc9b6;border-radius:13px;padding:15px;margin:17px 0}
+.ch-outcome.good{border-color:#75935f;background:#e1e7cf}
+.ch-outcome b{font-size:16px}.ch-outcome p{margin:8px 0}.ch-outcome small{font-size:12px}
+@media(max-width:760px){.ch-case-grid,.ch-evidence-grid{grid-template-columns:1fr}.ch-entry{align-items:stretch;flex-direction:column}.ch-entry-crest{display:none}.ch-cta{align-self:flex-start}.ch-masthead{padding:26px 17px}.ch-ledger b{font-size:24px}.ch-step-tabs button{flex:1 1 calc(50% - 8px);min-width:0;padding:10px 8px}.ch-parchment{padding:21px 16px}.ch-answer{flex-direction:column}.ch-answer button{min-height:44px}.ch-mini-board{justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){.ch-case{transition:none}}
