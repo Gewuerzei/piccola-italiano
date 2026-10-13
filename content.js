@@ -38,6 +38,21 @@ const EXTRA_SEED = [
   {id:'sc-vicini',kind:'scene',title:'🎬 第9幕 · 邻居来敲门',meaning:'邻居反映晚上声音有点大，要解释并礼貌回应。',example:'Mi dispiace, abbasso subito il volume.',tags:['日常','礼貌','B1'],links:['w-ocio','g-condizionale'],steps:[
     {actor:'Vicino',prompt:'Scusa, si sente la musica fino al piano di sotto.',task:'道歉并承诺降低音量。',sample:'Mi dispiace, non me ne ero accorto. Abbasso subito il volume.',tip:'non me ne ero accorto = 我之前没注意到。'},
     {actor:'Vicino',prompt:'Grazie. Domani mi alzo presto.',task:'表示理解，祝对方晚安。',sample:'Certo, capisco. Buona notte e scusa ancora!',tip:'简短且礼貌通常比解释一长串原因更自然。'}]}
+  {"id":"w-prevedere","kind":"word","title":"prevedere","meaning":"预见、预测；法律文本中也可指“规定、涵盖某种情况”。","example":"Il regolamento prevede un'eccezione.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-trasportare","kind":"word","title":"trasportare","meaning":"运输、搬运。拉丁语 trans-（越过）+ portare（携带）。","example":"Il furgone trasporta la merce.","tags":["餐馆","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-contraddire","kind":"word","title":"contraddire","meaning":"反驳，提出相反观点；可说 non voglio contraddirti。","example":"Non voglio contraddirti, ma il conto non torna.","tags":["会话","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-autonomia","kind":"word","title":"autonomia","meaning":"自主权、独立性；汽车语境中指续航距离或时长。","example":"Questa auto ha una buona autonomia.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-sottopassaggio","kind":"word","title":"sottopassaggio","meaning":"下穿道路或铁路线的通道，sotto + passaggio。","example":"Attraversiamo dal sottopassaggio.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-retrocedere","kind":"word","title":"retrocedere","meaning":"往后退、撤回，也可表示降级。","example":"Il camion ha iniziato a retrocedere.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-circostanza","kind":"word","title":"circostanza","meaning":"情形、周边条件。常用复数 circostanze。","example":"Date le circostanze, è meglio aspettare.","tags":["B1","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-interrompere","kind":"word","title":"interrompere","meaning":"打断、中断。可用来表示工作、谈话或交通中断。","example":"Scusa se ti interrompo.","tags":["会话","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-metafora","kind":"word","title":"metafora","meaning":"隐喻、比喻；希腊语原义为“转移”。","example":"Questa espressione è una metafora.","tags":["词源","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-diagnosi","kind":"word","title":"diagnosi","meaning":"诊断、辨别判断，阴性名词。","example":"Il medico ha fatto una diagnosi.","tags":["就医","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-sorpassare","kind":"word","title":"sorpassare","meaning":"超过、超车；常用于驾考理论。","example":"È vietato sorpassare qui.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-cavalcavia","kind":"word","title":"cavalcavia","meaning":"道路上跨结构、跨线桥；复数形式通常不变。","example":"Gira a destra dopo il cavalcavia.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-inversione","kind":"word","title":"inversione","meaning":"倒转、反向；inversione di marcia 表示掉头。","example":"Qui non si può fare inversione di marcia.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-prevalentemente","kind":"word","title":"prevalentemente","meaning":"主要地、大部分情况下。prevalente + -mente。","example":"Il traffico è prevalentemente urbano.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-precauzione","kind":"word","title":"precauzione","meaning":"预防措施、谨慎；源头意为“事先提防”。","example":"Devi guidare con precauzione.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
 ];
 const EXTRA_EXERCISES = [
  {id:'e16',itemId:'w-schei',prompt:'Veneto口语中 schei 指什么？',choices:['钱','蔬菜','汽车'],correct:0,why:'schei 是Veneto地方口语“钱”。正式表达用 soldi。'},
@@ -50,6 +65,21 @@ const EXTRA_EXERCISES = [
  {id:'e23',itemId:'w-ocio',prompt:'Veneto口语 òcio! 更接近：',choices:['小心！','再见！','谢谢！'],correct:0,why:'对应标准意大利语 occhio! / attenzione!。'},
  {id:'e24',itemId:'w-guasto',prompt:'un guasto al motore 是：',choices:['发动机故障','倒车雷达','引擎盖'],correct:0,why:'guasto = 故障。'},
  {id:'e25',itemId:'w-purche',prompt:'purché 最常表示：',choices:['虽然','只要，条件是','此前'],correct:1,why:'purché 引出条件，在从句中常搭配虚拟式。'}
+  {"id":"e-50-pre","itemId":"w-prevedere","prompt":"Il regolamento ___ alcune eccezioni.","choices":["prevede","prevedono","prevedi"],"correct":0,"why":"il regolamento 是单数第三人称；prevede 可表示规章涵盖某些例外。"},
+  {"id":"e-50-inv","itemId":"w-inversione","prompt":"inversione di marcia 具体指：","choices":["掉头","停车","鸣笛"],"correct":0,"why":"inversione di marcia = 掉头。"},
+  {"id":"e-50-retro","itemId":"w-retrocedere","prompt":"retro- 在 retrocedere 里的方向感是：","choices":["往后","从中间","绕圈"],"correct":0,"why":"retro- = 向后。"},
+  {"id":"e-50-cav","itemId":"w-cavalcavia","prompt":"i ___ 是哪一个复数形式？","choices":["cavalcavie","cavalcavia","cavalcavii"],"correct":1,"why":"cavalcavia 作名词通常不变。"},
+  {"id":"e-50-preva","itemId":"w-prevalentemente","prompt":"prevalentemente 大致表示：","choices":["始终","主要地","偶尔"],"correct":1,"why":"prevalentemente = 主要地，不等于总是。"},
+  {"id":"e-50-ante","itemId":"w-antistante","prompt":"antistante 源头的 ante- 是：","choices":["前面","反对","内部"],"correct":0,"why":"ante- 表示在前；anti-（反对）是另一种前缀。"},
+  {"id":"e-50-diag","itemId":"w-diagnosi","prompt":"La ___ medica è stata fatta ieri.","choices":["diagnosa","diagnosi","diagnose"],"correct":1,"why":"diagnosi 是阴性名词，形式固定。"},
+  {"id":"e-50-circ","itemId":"w-circostanza","prompt":"Date le ___, conviene aspettare.","choices":["circostanze","circostanzi","circostanza"],"correct":0,"why":"circostanza 的复数是 circostanze。"},
+  {"id":"e-50-sotto","itemId":"w-sottopassaggio","prompt":"sottopassaggio 指：","choices":["上跨桥","地下或下穿通道","高速入口"],"correct":1,"why":"sotto = 下面；passaggio = 通道。"},
+  {"id":"e-50-auto","itemId":"w-autonomia","prompt":"Un'auto ha un'autonomia di 300 km. 意思是：","choices":["续航300公里","最高时速300公里","车长300公里"],"correct":0,"why":"autonomia 在汽车语境中常指续航能力。"},
+  {"id":"e-50-meta","itemId":"w-metafora","prompt":"希腊来源的 metafora 最初和什么动作有关？","choices":["转移","点燃","记录"],"correct":0,"why":"原义接近 transfer／转移。"},
+  {"id":"e-50-contr","itemId":"w-contraddire","prompt":"«Non voglio contraddirti» 可以理解为：","choices":["我不是想反驳你","我不想忘记你","我不能看见你"],"correct":0,"why":"contra + dicere = 说相反的话。"},
+  {"id":"e-50-inter","itemId":"w-interrompere","prompt":"«Scusa se ti interrompo» 最接近：","choices":["抱歉打断你","抱歉迟到","感谢你解释"],"correct":0,"why":"inter + rompere = 从中间断开。"},
+  {"id":"e-50-sor","itemId":"w-sorpassare","prompt":"«È vietato sorpassare» 的意思是：","choices":["禁止超车","必须超车","允许靠边停车"],"correct":0,"why":"sorpassare = 超过、超车。"},
+  {"id":"e-50-prec","itemId":"w-precauzione","prompt":"«Guidare con precauzione» 表示：","choices":["谨慎驾驶","反向驾驶","夜间驾驶"],"correct":0,"why":"precauzione = 预防性谨慎措施。"},
 ];
 const MISSION_DAYS = [
  {title:'危险警告标志',italian:'Segnali di pericolo',focus:'三角形危险标志、危险路段与提前防范',terms:['pericolo','curva','attraversamento']},
