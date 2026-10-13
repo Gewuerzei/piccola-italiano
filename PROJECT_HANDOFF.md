@@ -1,4 +1,4 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.6.0
+# PROJECT_HANDOFF · Piccola Italiano v0.7.0
 
 - Repo: `Gewuerzei/piccola-italiano` (NOT `Gewuerzei/-Piccola`).
 - PWA is local-first; IndexedDB name `piccola-italiano`, object store `data`, key `state`, schemaVersion=1.
@@ -22,3 +22,13 @@
 - New seed knowledge and language drills appended in `content.js`; all old IDs/progress remain intact.
 - SW cache: `piccola-italiano-v006`; old caches may be deleted by service worker, **but never clear IndexedDB / localStorage**.
 - Verify all live JS assets, Pages build, phone appearance, offline cache, and imported bank state before claiming full iPhone verification.
+
+## v0.7 · Cancelleria (2026-10-14)
+
+- New independent `chancery.js` script (after `codex.js`, BEFORE `app.js`): six original fictional medieval city-state disputes, 24 evidence notes, 18 witness statements, 12 typed language puzzle checks, three unique verdict choices per case and lasting outcomes. Historical settings are fiction; Italian clauses are **modern teaching paraphrases**, not claimed authentic medieval Italian.
+- `chancery.js` appends twelve `EXTRA_SEED` lexical entries and twelve `EXTRA_EXERCISES` entries before app.js consumes them; do not move script after app.js.
+- New state field `state.chancery={cases:{},logs:[]}`, additive under same IndexedDB `piccola-italiano`, store data/key state/schemaVersion=1. No clearing/replacing preexisting data. Progress records contain evidence[], witnesses[], answers{}, first decision, completedAt and logs; points derived from first judgments only; verdict cannot be changed or farmed.
+- Backup import merges known-case evidence/witnesses/puzzle answers and only validates/restores first judgment after prerequisites are met. Existing local decisions are never overwritten by importing older/different backup.
+- Entry buttons on Home and Adventure panel; active case screen: dossier/evidence/witness/language/verdict, link to existing etymology with return bridge.
+- Scoped parchment CSS in `styles.css` works even if user keeps light/dark theme. Service worker `piccola-italiano-v007`, caches new script; no remote API.
+- No official B1 driving bank auto-import or official-question provenance claim. iPhone offline / IndexedDB must be verified on device. Last static and mock-action tests passed, but device interaction remains unverified.
