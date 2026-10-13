@@ -1,3 +1,7 @@
+# Changelog · Piccola Italiano
+
+历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
+
 ## 0.7.0 · 2026-10-14
 
 - Added fictional historical chancery interactive investigations (six dossiers, 24 evidence fragments, 18 witness accounts, 12 written clause checks, 18 possible verdict endings).
@@ -13,8 +17,6 @@
 - Twelve linked vocabulary cards and ten language exercises; all v0.5 content retained.
 - Added codex.js and SW cache v006, no schema migration or data reset.
 - Official theory-question bank is still not verified/imported.
-
-# Changelog · Piccola Italiano
 
 ## 0.5.0 · 2026-10-14
 
