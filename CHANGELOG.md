@@ -1,3 +1,11 @@
+## 0.6.0 · 2026-10-14
+
+- Optional Codex parchment theme with paper/ink visual treatment for language archaeology and mysteries.
+- Twelve medieval-document etymology dossiers; three new mysteries (9 total), and nine new puzzle stages.
+- Twelve linked vocabulary cards and ten language exercises; all v0.5 content retained.
+- Added codex.js and SW cache v006, no schema migration or data reset.
+- Official theory-question bank is still not verified/imported.
+
 # Changelog · Piccola Italiano
 
 ## 0.5.0 · 2026-10-14
