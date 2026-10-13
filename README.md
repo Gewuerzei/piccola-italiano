@@ -1,4 +1,4 @@
-# Piccola Italiano v0.3.0 · Storie & Patente
+# Piccola Italiano v0.4.0 · Storie & Patente
 
 Independent local-first PWA, built for learning Italian from real contexts. **Unrelated to Cassola**.
 
@@ -21,3 +21,10 @@ Upload the files **at repository root** of the independent repo `Gewuerzei/picco
 All personal progress stored in browser IndexedDB with localStorage fallback. Export JSON before clearing Safari website data; never commit personal backups to a public repository. MIT link: https://www.mit.gov.it/normativa/circolare-protocollo-19281-del-05072024. MIT site legal notice defaults to CC BY 3.0 unless otherwise specified: https://www.mit.gov.it/note-legali .
 
 **Restrictions:** Nothing here guarantees the current official written examination question list is identical to the 2024 publication. Ask driving school / Portale dell'Automobilista for current bank. No AI automatic grading and no official import auto-sync.
+
+## v0.4: Words through time + actual mysteries
+
+- 🏛️ Eight manually checked etymology dossiers with explicit source links to Treccani. Differentiate direct inheritance, modern derivation and calques/models; no claims of original Greek automobiles. Six new linked word entries in the main library.
+- 🔐 Two three-stage puzzle cases: Bassano's letter and a driving license dossier. Typed answers plus ordered reconstruction, clues, optional hints, answer checking, solved badges. This is **not** just a choice quiz.
+- Puzzle solve state is stored locally under `mysteries` and included in JSON backup merging. No data wipe, schemaVersion stays 1, no forced deadlines, no unlimited points farming.
+- `archaeology.js` is loaded before `app.js`, included in offline cache v004. Treccani links require Internet; authored learning content runs offline.
