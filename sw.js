@@ -1,6 +1,6 @@
-/* Piccola Italiano v0.6.0 - offline app shell, no remote dependencies */
-const CACHE = 'piccola-italiano-v006';
-const ASSETS = ['./', './index.html', './styles.css', './app.js', './content.js', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+/* Piccola Italiano v0.7.0 - offline app shell, no remote dependencies */
+const CACHE = 'piccola-italiano-v007';
+const ASSETS = ['./', './index.html', './styles.css', './app.js', './content.js', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './chancery.js', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
