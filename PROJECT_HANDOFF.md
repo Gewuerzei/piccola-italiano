@@ -1,4 +1,4 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.5.0
+# PROJECT_HANDOFF · Piccola Italiano v0.6.0
 
 - Repo: `Gewuerzei/piccola-italiano` (NOT `Gewuerzei/-Piccola`).
 - PWA is local-first; IndexedDB name `piccola-italiano`, object store `data`, key `state`, schemaVersion=1.
@@ -16,3 +16,9 @@
 - `state.mysteries.inferences` is an additional plain-object field, not a schema bump. Keep all existing progress and unknown local data. Import merges solved flags only (no destructive reset).
 - The new 15-word seed and 15 language quiz items live in `content.js`; they are not certified road-test questions. Source links in dossiers point to Treccani entries.
 - Cache `piccola-italiano-v005`, current display version 0.5.0. JS syntax and mocked puzzle-flow tests passed; iPhone/IDB persistence and service worker update need live-device validation.
+
+- v0.6: 12 added dossiers and 3 three-stage medieval document cases in `codex.js`; load after `archaeology.js` and `excavation.js`, before `app.js`.
+- Browser theme cycles `light` → `dark` → `codex` → `light`. Existing `settings.theme` values continue working. No database schema upgrade or destructive migration.
+- New seed knowledge and language drills appended in `content.js`; all old IDs/progress remain intact.
+- SW cache: `piccola-italiano-v006`; old caches may be deleted by service worker, **but never clear IndexedDB / localStorage**.
+- Verify all live JS assets, Pages build, phone appearance, offline cache, and imported bank state before claiming full iPhone verification.
