@@ -1,4 +1,4 @@
-# Piccola Italiano v0.6.0 · Storie & Patente
+# Piccola Italiano v0.7.0 · Storie & Patente
 
 Independent local-first PWA, built for learning Italian from real contexts. **Unrelated to Cassola**.
 
@@ -45,3 +45,12 @@ All personal progress stored in browser IndexedDB with localStorage fallback. Ex
 - Twelve additional linked vocabulary entries and ten language drills. v0.5 root-inference features, stories and all existing data remain.
 - Added `codex.js` after `excavation.js` and before `app.js`; service worker cache `piccola-italiano-v006`.
 - No change to the official driving bank import status; full MIT question list is **not** imported.
+
+## v0.7 · 城邦文书院超大杯
+
+- Six playable city-state cases set in medieval-flavored fictional Italy, using readable **modern** Italian learning text for A2–B2. Evidence, testimony, language proofs and first-judgment outcomes are preserved locally.
+- Per case: 4 collectable evidence records, 3 witness statements, 2 typed clause/grammar tests, 3 alternative judgments, meaningful post-judgment feedback; all cases independent and accessible without forced deadlines.
+- New dictionary/grammar-linked language pack: 12 vocabulary cards and 12 optional drills. Main archive: old 36 etymology dossiers, 9 word mysteries and 12 root-inference puzzles preserved.
+- Visually distinct parchment screen with a dossier map, seals, archival notebook, dynamic civic ledger, progress checkpoints and mobile-responsive panels.
+- First verdict alone counts in city reputation/trade/order ledger. This is a game, not legal or historical evidence; text is modern pedagogical paraphrase.
+- The personal record stays local (IndexedDB v1); backups merge first-valid verdicts and never delete older student data. `chancery.js` pre-cached by service worker v007.
