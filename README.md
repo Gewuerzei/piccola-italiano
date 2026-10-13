@@ -1,4 +1,4 @@
-# Piccola Italiano v0.5.0 · Storie & Patente
+# Piccola Italiano v0.6.0 · Storie & Patente
 
 Independent local-first PWA, built for learning Italian from real contexts. **Unrelated to Cassola**.
 
@@ -36,3 +36,12 @@ All personal progress stored in browser IndexedDB with localStorage fallback. Ex
 - Quest state is additive under `state.mysteries.inferences`. Existing IDB schema v1 and existing progress stay intact. JSON backup import now merges first successful root solves without erasing local successes.
 - Scripts: `archaeology.js` followed by `excavation.js`, then `app.js`; service worker cache `piccola-italiano-v005`.
 - Tests: source JS parsing for all changed scripts and synthetic action tests for root answers + persistence passed. Real iPhone PWA remains to be tested.
+
+## v0.6 · Codex parchment edition
+
+- New optional global third theme: light → dark → Codex (paper, wax seals, illuminated-document styling). Select from the top-right appearance toggle or Settings; stored in the existing settings object.
+- Twelve original etymology dossiers with Treccani source links, emphasizing parchment, seals, notaries, charters, edicts, and archives. Avoid copying dictionary definitions.
+- Three additional three-stage, typed/sequence mysteries set in a medieval scriptorium, at a city gate and in a notary's vault (nine cases total). These are fictional teaching scenarios, not claims about a specific historical event.
+- Twelve additional linked vocabulary entries and ten language drills. v0.5 root-inference features, stories and all existing data remain.
+- Added `codex.js` after `excavation.js` and before `app.js`; service worker cache `piccola-italiano-v006`.
+- No change to the official driving bank import status; full MIT question list is **not** imported.
