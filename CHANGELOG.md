@@ -1,3 +1,11 @@
+## 0.7.0 · 2026-10-14
+
+- Added fictional historical chancery interactive investigations (six dossiers, 24 evidence fragments, 18 witness accounts, 12 written clause checks, 18 possible verdict endings).
+- Added scoped parchment UI, evidence notebook, civic standing ledger and no-farming first verdict persistence.
+- Added twelve linked vocabulary cards and twelve related language practice questions.
+- Non-destructive state import and local persistence for chancery cases; IndexedDB schema stays 1.
+- New offline asset `chancery.js`; service worker cache v007. Does not import or claim official driving bank data.
+
 ## 0.6.0 · 2026-10-14
 
 - Optional Codex parchment theme with paper/ink visual treatment for language archaeology and mysteries.
