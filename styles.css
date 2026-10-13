@@ -42,3 +42,61 @@ body.dark .mission-teaser,body.dark .mission-banner{background:linear-gradient(1
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 /* v0.5 · typed root inference laboratory */
 .root-quest-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--accent-soft);border:1px solid var(--line);border-radius:22px;margin:16px 0 20px}.root-quest-banner h2{font-size:19px;margin:8px 0}.root-quest-banner p{font-size:12px;color:var(--muted);line-height:1.6}.root-quest-card{max-width:760px;margin:auto;display:flex;flex-direction:column;gap:16px}.root-quest-card h2{font-size:clamp(19px,4vw,27px);line-height:1.5;margin:0;overflow-wrap:anywhere}.root-quest-scene{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--bg);line-height:1.8}.root-quest-card form{display:flex;gap:9px}.root-quest-card form input{flex:1;min-width:0;min-height:48px;border:1px solid var(--line);border-radius:13px;background:var(--paper);color:var(--ink);padding:12px;font-size:16px}.root-quest-nav{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:17px}.root-quest-nav button{min-width:110px}@media(max-width:700px){.root-quest-banner{flex-direction:column;align-items:stretch}.root-quest-banner .btn{align-self:flex-start}.root-quest-card form{flex-direction:column}.root-quest-card form button{width:100%}}
+
+
+/* v0.6 · Codex — parchment study theme. No external fonts or network assets. */
+body.codex {
+  --bg:#e9dec5;--paper:#f8f0dc;--side:#3e3025;--ink:#39291c;--muted:#715a44;
+  --line:#ccb38b;--accent:#855122;--accent-soft:#f0e1bf;
+  --violet:#78554b;--violet-soft:#eadccc;--amber:#a36e26;--amber-soft:#f3e2bf;
+  --red:#994841;--red-soft:#f3dcd2;--shadow:0 9px 23px rgba(76,50,20,.12);
+  font-family:Georgia,"Times New Roman","Songti SC","Noto Serif SC",serif;
+  color-scheme:light;
+  background:radial-gradient(ellipse at 20% 8%,#f1e5cd 0%,#e9dec5 60%,#dfcfaf 100%);
+}
+body.codex .sidebar {background:#3e3025}
+body.codex .sidebar .nav-button.active,body.codex .sidebar .nav-button:hover{background:#72563e}
+body.codex .topbar,body.codex .card,body.codex .tab,body.codex .item,body.codex .stat,body.codex .root-entry,
+body.codex .mystery-entry,body.codex .root-record,body.codex .mystery-stage,body.codex .mystery-finale,
+body.codex .answer,body.codex .linked,body.codex .search-bar {
+  background:linear-gradient(180deg,#fbf5e6 0%,#f0e2c6 100%);
+  border-color:#cdb086;
+}
+body.codex .hero,body.codex .adventure-top,body.codex .root-intro,body.codex .root-promo {
+  background:linear-gradient(115deg,#56412f,#8e6641 65%,#b1875b);
+  color:#fff7e6;
+}
+body.codex .hero p,body.codex .adventure-top p,body.codex .root-intro p,body.codex .root-promo p{color:#fff0d6}
+body.codex .root-record,body.codex .mystery-stage,body.codex .mystery-entry,body.codex .root-entry {
+  position:relative;
+  box-shadow:0 10px 26px rgba(67,41,15,.14),inset 0 0 0 2px rgba(255,252,240,.65);
+}
+body.codex .root-record::before,body.codex .mystery-stage::before,body.codex .mystery-entry::before,
+body.codex .root-entry::before {
+  content:"";position:absolute;inset:8px;border:1px dashed #bf9a69;border-radius:15px;opacity:.5;pointer-events:none;
+}
+body.codex .root-record h2,body.codex .mystery-stage h2,body.codex .mystery-entry strong,body.codex .root-entry strong {
+  font-family:Georgia,"Times New Roman","Songti SC","Noto Serif SC",serif;
+}
+body.codex .mystery-clue,body.codex .root-inline,body.codex .root-then,
+body.codex .root-now,body.codex .root-pieces>div,body.codex .mystery-selected,
+body.codex .root-quest-scene{
+  color:#39291c;background:linear-gradient(180deg,#fff8e8,#efdfba);border-color:#c9a97a;
+}
+body.codex .btn.primary {background:#825126;color:#fffaf0}
+body.codex .btn.primary:hover {background:#693d19}
+body.codex .btn.secondary,body.codex .icon-button {
+  background:linear-gradient(#fbf2df,#ecdbb8);border-color:#c8a87b;color:#442e1d;
+}
+body.codex .chip,body.codex .eyebrow {color:#805026}
+body.codex .mystery-board .mystery-head h2::after,body.codex .root-intro h2::after {content:" ✶";color:#e7c38d}
+body.codex .mystery-emoji {filter:sepia(.2)}
+body.codex .progress-track{background:#dfcba8}
+body.codex .progress-track span{background:#855122}
+body.codex .mystery-stage input,body.codex .root-quest-card input,
+body.codex .conversation textarea,body.codex .search-bar{
+  background:#fffaf0;border-color:#d1ae7f;color:#39291c;
+}
+body.codex .adv-feedback,body.codex .notice {color:#5a3b22;background:#f1dfb9;border-color:#cba26c}
+body.codex .root-quest-card,body.codex .root-quest-banner {border-color:#cba877}
+@media(max-width:700px){body.codex{font-size:16px}}
