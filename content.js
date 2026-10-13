@@ -37,7 +37,7 @@ const EXTRA_SEED = [
     {actor:'Meccanico',prompt:'Da quanto tempo succede?',task:'解释从什么时候开始，并要求检查。',sample:'Da circa tre giorni. Potreste controllarla?',tip:'da + 时间段 可以说明从过去持续到现在。'}]},
   {id:'sc-vicini',kind:'scene',title:'🎬 第9幕 · 邻居来敲门',meaning:'邻居反映晚上声音有点大，要解释并礼貌回应。',example:'Mi dispiace, abbasso subito il volume.',tags:['日常','礼貌','B1'],links:['w-ocio','g-condizionale'],steps:[
     {actor:'Vicino',prompt:'Scusa, si sente la musica fino al piano di sotto.',task:'道歉并承诺降低音量。',sample:'Mi dispiace, non me ne ero accorto. Abbasso subito il volume.',tip:'non me ne ero accorto = 我之前没注意到。'},
-    {actor:'Vicino',prompt:'Grazie. Domani mi alzo presto.',task:'表示理解，祝对方晚安。',sample:'Certo, capisco. Buona notte e scusa ancora!',tip:'简短且礼貌通常比解释一长串原因更自然。'}]}
+    {actor:'Vicino',prompt:'Grazie. Domani mi alzo presto.',task:'表示理解，祝对方晚安。',sample:'Certo, capisco. Buona notte e scusa ancora!',tip:'简短且礼貌通常比解释一长串原因更自然。'}]},
   {"id":"w-prevedere","kind":"word","title":"prevedere","meaning":"预见、预测；法律文本中也可指“规定、涵盖某种情况”。","example":"Il regolamento prevede un'eccezione.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
   {"id":"w-trasportare","kind":"word","title":"trasportare","meaning":"运输、搬运。拉丁语 trans-（越过）+ portare（携带）。","example":"Il furgone trasporta la merce.","tags":["餐馆","词源","v0.5"],"links":["sc-guida"]},
   {"id":"w-contraddire","kind":"word","title":"contraddire","meaning":"反驳，提出相反观点；可说 non voglio contraddirti。","example":"Non voglio contraddirti, ma il conto non torna.","tags":["会话","词源","v0.5"],"links":["sc-guida"]},
@@ -64,7 +64,7 @@ const EXTRA_EXERCISES = [
  {id:'e22',itemId:'w-salvo',prompt:'在规则里 salvo diversa segnalazione 表示：',choices:['不论有什么标志','除非有不同的交通标志','只要标志是蓝色'],correct:1,why:'salvo 在此引出例外条件。'},
  {id:'e23',itemId:'w-ocio',prompt:'Veneto口语 òcio! 更接近：',choices:['小心！','再见！','谢谢！'],correct:0,why:'对应标准意大利语 occhio! / attenzione!。'},
  {id:'e24',itemId:'w-guasto',prompt:'un guasto al motore 是：',choices:['发动机故障','倒车雷达','引擎盖'],correct:0,why:'guasto = 故障。'},
- {id:'e25',itemId:'w-purche',prompt:'purché 最常表示：',choices:['虽然','只要，条件是','此前'],correct:1,why:'purché 引出条件，在从句中常搭配虚拟式。'}
+ {id:'e25',itemId:'w-purche',prompt:'purché 最常表示：',choices:['虽然','只要，条件是','此前'],correct:1,why:'purché 引出条件，在从句中常搭配虚拟式。'},
   {"id":"e-50-pre","itemId":"w-prevedere","prompt":"Il regolamento ___ alcune eccezioni.","choices":["prevede","prevedono","prevedi"],"correct":0,"why":"il regolamento 是单数第三人称；prevede 可表示规章涵盖某些例外。"},
   {"id":"e-50-inv","itemId":"w-inversione","prompt":"inversione di marcia 具体指：","choices":["掉头","停车","鸣笛"],"correct":0,"why":"inversione di marcia = 掉头。"},
   {"id":"e-50-retro","itemId":"w-retrocedere","prompt":"retro- 在 retrocedere 里的方向感是：","choices":["往后","从中间","绕圈"],"correct":0,"why":"retro- = 向后。"},
