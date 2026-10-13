@@ -52,7 +52,19 @@ const EXTRA_SEED = [
   {"id":"w-cavalcavia","kind":"word","title":"cavalcavia","meaning":"道路上跨结构、跨线桥；复数形式通常不变。","example":"Gira a destra dopo il cavalcavia.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
   {"id":"w-inversione","kind":"word","title":"inversione","meaning":"倒转、反向；inversione di marcia 表示掉头。","example":"Qui non si può fare inversione di marcia.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
   {"id":"w-prevalentemente","kind":"word","title":"prevalentemente","meaning":"主要地、大部分情况下。prevalente + -mente。","example":"Il traffico è prevalentemente urbano.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
-  {"id":"w-precauzione","kind":"word","title":"precauzione","meaning":"预防措施、谨慎；源头意为“事先提防”。","example":"Devi guidare con precauzione.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
+  {"id":"w-precauzione","kind":"word","title":"precauzione","meaning":"预防措施、谨慎；源头意为“事先提防”。","example":"Devi guidare con precauzione.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},,
+ {"id":"w-pergamena","kind":"word","title":"pergamena","meaning":"羊皮纸、古风文书","example":"La biblioteca conserva una pergamena medievale.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-capitolo","w-sigillo"]},
+ {"id":"w-sigillo","kind":"word","title":"sigillo","meaning":"印章、封印","example":"Il documento ha un sigillo.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-notaio","kind":"word","title":"notaio","meaning":"公证人","example":"Vorrei parlare con un notaio.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-capitolo","kind":"word","title":"capitolo","meaning":"章节、条款部分","example":"Ho studiato un capitolo sulla precedenza.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-decreto","kind":"word","title":"decreto","meaning":"正式法令、政令","example":"Il decreto è entrato in vigore.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-editto","w-statuto"]},
+ {"id":"w-documento","kind":"word","title":"documento","meaning":"文件、证件、文书","example":"Porto sempre i documenti.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-ritirare","w-notaio"]},
+ {"id":"w-statuto","kind":"word","title":"statuto","meaning":"章程、规约","example":"Lo statuto del comune è antico.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-privilegio","kind":"word","title":"privilegio","meaning":"特权、特殊待遇","example":"Non è un diritto, ma un privilegio.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-archivio","kind":"word","title":"archivio","meaning":"档案库、档案系统","example":"Il fascicolo si trova in archivio.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-moneta","kind":"word","title":"moneta","meaning":"硬币、货币","example":"Ho trovato una moneta antica.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-bandire","kind":"word","title":"bandire","meaning":"公开发布、宣布；招考招标","example":"Il comune ha bandito un concorso.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
+ {"id":"w-editto","kind":"word","title":"editto","meaning":"敕令、布告、历史性的法令","example":"L'editto era sulla porta della città.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]}
 ];
 const EXTRA_EXERCISES = [
  {id:'e16',itemId:'w-schei',prompt:'Veneto口语中 schei 指什么？',choices:['钱','蔬菜','汽车'],correct:0,why:'schei 是Veneto地方口语“钱”。正式表达用 soldi。'},
@@ -79,7 +91,17 @@ const EXTRA_EXERCISES = [
   {"id":"e-50-contr","itemId":"w-contraddire","prompt":"«Non voglio contraddirti» 可以理解为：","choices":["我不是想反驳你","我不想忘记你","我不能看见你"],"correct":0,"why":"contra + dicere = 说相反的话。"},
   {"id":"e-50-inter","itemId":"w-interrompere","prompt":"«Scusa se ti interrompo» 最接近：","choices":["抱歉打断你","抱歉迟到","感谢你解释"],"correct":0,"why":"inter + rompere = 从中间断开。"},
   {"id":"e-50-sor","itemId":"w-sorpassare","prompt":"«È vietato sorpassare» 的意思是：","choices":["禁止超车","必须超车","允许靠边停车"],"correct":0,"why":"sorpassare = 超过、超车。"},
-  {"id":"e-50-prec","itemId":"w-precauzione","prompt":"«Guidare con precauzione» 表示：","choices":["谨慎驾驶","反向驾驶","夜间驾驶"],"correct":0,"why":"precauzione = 预防性谨慎措施。"},
+  {"id":"e-50-prec","itemId":"w-precauzione","prompt":"«Guidare con precauzione» 表示：","choices":["谨慎驾驶","反向驾驶","夜间驾驶"],"correct":0,"why":"precauzione = 预防性谨慎措施。"},,
+ {"id":"e-codex-1","itemId":"w-pergamena","prompt":"哪一个意大利语词表示羊皮纸？","choices":["pergamena","pneumatico","pericolo"],"correct":0,"why":"pergamena 与古代书写材料有关。"},
+ {"id":"e-codex-2","itemId":"w-sigillo","prompt":"文书上的封印叫什么？","choices":["sigillo","guasto","turno"],"correct":0,"why":"sigillo = 印章、封印。"},
+ {"id":"e-codex-3","itemId":"w-notaio","prompt":"办理法律公证可能需要找谁？","choices":["notaio","pedone","passeggero"],"correct":0,"why":"notaio 是公证人。"},
+ {"id":"e-codex-4","itemId":"w-capitolo","prompt":"«Il secondo capitolo» 表示：","choices":["第二章","第二张驾照","第二个人"],"correct":0,"why":"capitolo = 章节。"},
+ {"id":"e-codex-5","itemId":"w-decreto","prompt":"«Un decreto» 通常是：","choices":["一项法令或正式决定","一张路线图","一杯咖啡"],"correct":0,"why":"decreto 具有正式法律或行政语体。"},
+ {"id":"e-codex-6","itemId":"w-documento","prompt":"«Porta i documenti» 是叫你带：","choices":["证件／文件","雨伞","零钱"],"correct":0,"why":"documenti 是文件、证件的复数。"},
+ {"id":"e-codex-7","itemId":"w-statuto","prompt":"一个协会的章程通常称：","choices":["statuto","sosta","sottopassaggio"],"correct":0,"why":"statuto = 组织章程。"},
+ {"id":"e-codex-8","itemId":"w-privilegio","prompt":"«È un privilegio» 更接近：","choices":["这是一种特权","这是交通标志","这是一种蔬菜"],"correct":0,"why":"privilegio = 特别待遇或特权。"},
+ {"id":"e-codex-9","itemId":"w-archivio","prompt":"«In archivio» 通常表示：","choices":["在档案库里","在高速公路","在厨房台面"],"correct":0,"why":"archivio = 档案库。"},
+ {"id":"e-codex-10","itemId":"w-editto","prompt":"哪一个更有古代布告或敕令的语体？","choices":["editto","macchiato","gomma"],"correct":0,"why":"editto 具有历史法令意味。"}
 ];
 const MISSION_DAYS = [
  {title:'危险警告标志',italian:'Segnali di pericolo',focus:'三角形危险标志、危险路段与提前防范',terms:['pericolo','curva','attraversamento']},
