@@ -1,6 +1,6 @@
-/* Piccola Italiano · 0.5.0 · local-first, framework-free */
+/* Piccola Italiano · 0.6.0 · local-first, framework-free */
 'use strict';
-const VERSION = '0.5.0';
+const VERSION = '0.6.0';
 const KIND = {word:'词汇',grammar:'语法',sentence:'例句',scene:'会话'};
 const KINDS = {word:'Vocabolario',grammar:'Grammatica',sentence:'Frasi',scene:'Conversazione'};
 const NAV = [
@@ -71,7 +71,7 @@ function readIDB(){return new Promise((resolve,reject)=>{const tx=db.transaction
 function writeIDB(value){return new Promise((resolve,reject)=>{const tx=db.transaction('data','readwrite');tx.objectStore('data').put(value,'state');tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)})}
 async function bootStorage(){try{db=await openDB();const saved=await readIDB();if(saved && typeof saved==='object' && saved.schemaVersion===1)state={...DEFAULT(),...saved,settings:{...DEFAULT().settings,...saved.settings}};}catch(err){storageMode='localstorage';console.warn('IndexedDB fallback',err);try{const saved=JSON.parse(localStorage.getItem('piccola-italiano-state')||'null');if(saved&&saved.schemaVersion===1)state={...DEFAULT(),...saved};}catch(e){storageMode='memory';}}}
 function save(){const snapshot=JSON.parse(JSON.stringify(state));saveChain=saveChain.catch(()=>{}).then(async()=>{try{if(storageMode==='indexeddb')await writeIDB(snapshot);else if(storageMode==='localstorage')localStorage.setItem('piccola-italiano-state',JSON.stringify(snapshot));else throw Error('持久化不可用');updateStorageStatus()}catch(error){console.error('Saving failed',error);$('#storage-status').textContent='⚠ 保存失败，请导出备份';toast('⚠ 保存失败：请立即导出学习数据备份');}});return saveChain}
-function applyTheme(){document.body.classList.toggle('dark',state.settings.theme==='dark');$('#theme-btn').textContent=state.settings.theme==='dark'?'☀':'☾'}
+function applyTheme(){const t=state.settings.theme||'light';document.body.classList.toggle('dark',t==='dark');document.body.classList.toggle('codex',t==='codex');const b=$('#theme-btn');if(b)b.textContent=t==='dark'?'☀':t==='codex'?'📜':'☾'}
 function renderNav(){const n=NAV.map(([id,icon,label])=>`<button type="button" class="nav-button ${ui.tab===id?'active':''}" data-action="nav" data-id="${id}" aria-current="${ui.tab===id?'page':'false'}"><span class="nav-icon">${icon}</span>${label}</button>`).join('');$('#desktop-nav').innerHTML=n;$('#bottom-nav').innerHTML=NAV.map(([id,icon,label])=>`<button type="button" class="bottom-link ${ui.tab===id?'active':''}" data-action="nav" data-id="${id}" aria-label="${label}" aria-current="${ui.tab===id?'page':'false'}"><span class="nav-icon">${icon}</span>${label}</button>`).join('');$('#breadcrumb').textContent=NAV.find(n=>n[0]===ui.tab)?.[2]||'La mia scuola'}
 function heading(title,sub,action=''){return `<div class="heading"><div><h2>${title}</h2><p>${sub}</p></div>${action}</div>`}
 function stat(label,value,sub){return `<div class="stat"><div class="label">${label}</div><strong>${value}</strong><small>${sub}</small></div>`}
@@ -133,7 +133,7 @@ function settings(){const used=state.customItems.length, logs=state.attempts.len
  <div class="card"><div class="setting"><div><h3>📥 导出完整学习备份</h3><p>导出自建知识点、复习进度、错题、剧场记录与14天驾考任务。JSON 可保存到文件或云盘。</p></div><button class="btn primary" data-action="export">导出 JSON</button></div>
  <div class="setting"><div><h3>📤 合并导入备份</h3><p>只做非破坏性合并：自建知识按ID合并，学习记录去重，复习进度保留更新较晚的版本，不清空旧数据。</p></div><button class="btn secondary" data-action="import">选择文件</button></div>
  <div class="setting"><div><h3>🔒 申请持久化存储</h3><p>若浏览器支持，将申请更可靠的离线数据保留策略。仍建议定期导出备份。</p></div><button class="btn secondary" data-action="persist">申请权限</button></div>
- <div class="setting"><div><h3>🌓 外观主题</h3><p>支持浅色与深色，保持相同的圆润卡片风格。</p></div><button class="btn secondary" data-action="theme">切换到${state.settings.theme==='dark'?'浅色':'深色'}</button></div>
+ <div class="setting"><div><h3>🌓 外观主题</h3><p>支持浅色、深色及中古羊皮纸 Codex 主题；卷轴、封蜡和文书设计更适合语言侦探。</p></div><button class="btn secondary" data-action="theme">切换到${state.settings.theme==='light'?'深色':state.settings.theme==='dark'?'羊皮纸':'浅色'}</button></div>
  </div>
  ${heading('本机数据','状态仅反映当前设备，不代表已经上传云端。')}
  <div class="stat-grid">${stat('自建条目',used,'存储在本机')}${stat('练习次数',logs,'包含选择题与复习')}${stat('会话练习',sc,'含自由输入文本')}${stat('当前版本',VERSION,'离线优先')}</div>
@@ -184,13 +184,13 @@ function action(e){const btn=e.target.closest('[data-action]');if(!btn)return;co
   case 'exit-scene':ui.sceneId=null;ui.sceneDraft='';ui.sceneRevealed=false;ui.sceneTurn=0;ui.sceneResponses=[];render();break;
   case 'scene-reveal':ui.sceneDraft=$('#scene-input')?.value.trim().slice(0,1000)||'';ui.sceneRevealed=true;render();break;
   case 'scene-grade':sceneGrade(btn.dataset.grade==='1');break;
-  case 'theme':state.settings.theme=state.settings.theme==='dark'?'light':'dark';save();render();break;
+  case 'theme':state.settings.theme=state.settings.theme==='light'?'dark':state.settings.theme==='dark'?'codex':'light';save();render();break;
   case 'export':exportData();break;
   case 'import':{const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>importData(input.files?.[0]);input.click();break}
   case 'persist':persist();break;
   default:if(!archaeologyAction(name,btn)&&!adventureAction(name,btn)&&!bankAction(name,btn))missionAction(name,btn);break;
  }}
-async function main(){await bootStorage();applyTheme();render();document.addEventListener('click',action);$('#theme-btn').addEventListener('click',()=>{state.settings.theme=state.settings.theme==='dark'?'light':'dark';save();render()});$('#add-form').addEventListener('submit',e=>{e.preventDefault();addItem(e.target)});
+async function main(){await bootStorage();applyTheme();render();document.addEventListener('click',action);$('#theme-btn').addEventListener('click',()=>{state.settings.theme=state.settings.theme==='light'?'dark':state.settings.theme==='dark'?'codex':'light';save();render()});$('#add-form').addEventListener('submit',e=>{e.preventDefault();addItem(e.target)});
  document.addEventListener('input',e=>{if(e.target.id==='library-search'){const pos=e.target.selectionStart;ui.search=e.target.value;const grid=$('#library-grid');const needle=ui.search.toLowerCase();const items=allItems().filter(item=>(ui.libraryKind==='all'||item.kind===ui.libraryKind)&&[item.title,item.meaning,item.example,...(item.tags||[])].join(' ').toLowerCase().includes(needle));if(grid)grid.innerHTML=items.length?items.map(itemCard).join(''):'<div class="empty">没有找到匹配的内容。</div>';const counter=e.target.parentElement.querySelector('span');if(counter)counter.textContent=`共 ${items.length} 项`;try{e.target.setSelectionRange(pos,pos)}catch{}}});
  if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker registration failed:',err));
  setInterval(missionExamTick,1000);
