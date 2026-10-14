@@ -1,8 +1,8 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.7.0
+# PROJECT_HANDOFF · Piccola Italiano v0.7.1
 
 **仓库：** `Gewuerzei/piccola-italiano`，独立于 Cassola 的 `Gewuerzei/-Piccola`。  
 **线上地址：** https://gewuerzei.github.io/piccola-italiano/  
-**当前应用版本：** `0.7.0` · **离线缓存：** `piccola-italiano-v007`。
+**当前应用版本：** `0.7.1` · **离线缓存：** `piccola-italiano-v0071`。
 
 **施工必读：** [AGENTS.md](AGENTS.md)（行为、安全、测试） → 本文件（实时交接） → [CHANGELOG.md](CHANGELOG.md)（历史） → 读取当前 `main` 源码。禁止凭此文档假定远端代码没有变化。
 
@@ -19,7 +19,7 @@
 - `excavation.js`：后续词源档案、谜题与12关输入式词根挑战。
 - `codex.js`：中古文书词源和三宗卷轴案件。
 - `chancery.js`：六宗虚构城邦案件、证据/证人、条款填词、首次裁决及本地记录。
-- `sw.js`：Service Worker（`piccola-italiano-v007`）；`manifest.webmanifest`、`icons/`：安装资源。
+- `sw.js`：Service Worker（`piccola-italiano-v0071`）；`manifest.webmanifest`、`icons/`：安装资源。
 
 **加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
 

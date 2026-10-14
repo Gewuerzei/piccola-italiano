@@ -2,6 +2,12 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.7.1 · 2026-10-14
+
+- Hotfix: removed accidental sparse entry in `content.js` caused by `},,`, which made the home-page metrics throw `TypeError` and display “初始化失败”.
+- Guarded built-in seed/exercise imports against invalid empty items. Preserved all existing learner data and IndexedDB schema 1.
+- Updated `content.js` and `app.js` script URLs with cache-busting query strings; advanced Service Worker cache to `piccola-italiano-v0071` so iPhone users can recover without clearing storage.
+
 ## 0.7.0 · 2026-10-14
 
 - Added fictional historical chancery interactive investigations (six dossiers, 24 evidence fragments, 18 witness accounts, 12 written clause checks, 18 possible verdict endings).

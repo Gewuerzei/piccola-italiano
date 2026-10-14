@@ -1,6 +1,6 @@
-/* Piccola Italiano · 0.6.0 · local-first, framework-free */
+/* Piccola Italiano · 0.7.1 · local-first, framework-free */
 'use strict';
-const VERSION = '0.7.0';
+const VERSION = '0.7.1';
 const KIND = {word:'词汇',grammar:'语法',sentence:'例句',scene:'会话'};
 const KINDS = {word:'Vocabolario',grammar:'Grammatica',sentence:'Frasi',scene:'Conversazione'};
 const NAV = [
@@ -47,8 +47,8 @@ const EXERCISES = [
   {id:'e14',itemId:'s-documento',prompt:'“我来领取居留证”：',choices:['Sono qui per ritirare il permesso.','Sono il permesso qui.','Vado il permesso.'],correct:0,why:'sono qui per + 不定式，表达来此目的。'},
   {id:'e15',itemId:'s-ultimamente',prompt:'“最近”作为句首时间副词，可说：',choices:['Ultimamente','Antistante','Necessariamente'],correct:0,why:'ultimamente 表示近来、最近。'}
 ];
-SEED.push(...EXTRA_SEED);
-EXERCISES.push(...EXTRA_EXERCISES);
+SEED.push(...EXTRA_SEED.filter(x=>x && typeof x.id==='string'));
+EXERCISES.push(...EXTRA_EXERCISES.filter(x=>x && typeof x.id==='string'));
 const DEFAULT = () => ({schemaVersion:1,chancery:{cases:{},logs:[]},customItems:[],progress:{},errors:[],attempts:[],sceneLogs:[],mission:{startedAt:null,checks:{},tests:[]},adventure:{stepWins:{},episodes:{},logs:[]},mysteries:{completed:{},firstSolve:{},logs:[]},settings:{theme:'light'}});
 let db=null, storageMode='indexeddb', state=DEFAULT(), saveChain=Promise.resolve(), toastTimer;
 const ui = {tab:'home',libraryKind:'all',search:'',detailId:null,quiz:null,reviewIds:[],reviewIndex:0,revealed:false,sceneId:null,sceneDraft:'',sceneRevealed:false,sceneTurn:0,sceneResponses:[],exam:null,examResult:null,rootsOpen:false,rootsId:null,chanceryId:null,chanceryRoom:'dossier',chanceryHint:null,chanceryFeedback:null,chanceryReturn:null,mysteryId:null,mysteryStage:0,mysterySequence:[],mysteryHint:false,mysteryFeedback:null};

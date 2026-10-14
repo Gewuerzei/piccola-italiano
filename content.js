@@ -52,7 +52,7 @@ const EXTRA_SEED = [
   {"id":"w-cavalcavia","kind":"word","title":"cavalcavia","meaning":"道路上跨结构、跨线桥；复数形式通常不变。","example":"Gira a destra dopo il cavalcavia.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
   {"id":"w-inversione","kind":"word","title":"inversione","meaning":"倒转、反向；inversione di marcia 表示掉头。","example":"Qui non si può fare inversione di marcia.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
   {"id":"w-prevalentemente","kind":"word","title":"prevalentemente","meaning":"主要地、大部分情况下。prevalente + -mente。","example":"Il traffico è prevalentemente urbano.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
-  {"id":"w-precauzione","kind":"word","title":"precauzione","meaning":"预防措施、谨慎；源头意为“事先提防”。","example":"Devi guidare con precauzione.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},,
+  {"id":"w-precauzione","kind":"word","title":"precauzione","meaning":"预防措施、谨慎；源头意为“事先提防”。","example":"Devi guidare con precauzione.","tags":["驾考","词源","v0.5"],"links":["sc-guida"]},
  {"id":"w-pergamena","kind":"word","title":"pergamena","meaning":"羊皮纸、古风文书","example":"La biblioteca conserva una pergamena medievale.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-capitolo","w-sigillo"]},
  {"id":"w-sigillo","kind":"word","title":"sigillo","meaning":"印章、封印","example":"Il documento ha un sigillo.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
  {"id":"w-notaio","kind":"word","title":"notaio","meaning":"公证人","example":"Vorrei parlare con un notaio.","tags":["词源","中古文书","Codex","A2-B1"],"links":["w-pergamena"]},
