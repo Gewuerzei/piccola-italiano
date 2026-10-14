@@ -1,6 +1,6 @@
-/* Piccola Italiano · 0.7.1 · local-first, framework-free */
+/* Piccola Italiano · 0.8.0 · local-first, framework-free */
 'use strict';
-const VERSION = '0.7.1';
+const VERSION = '0.8.0';
 const KIND = {word:'词汇',grammar:'语法',sentence:'例句',scene:'会话'};
 const KINDS = {word:'Vocabolario',grammar:'Grammatica',sentence:'Frasi',scene:'Conversazione'};
 const NAV = [
@@ -49,9 +49,9 @@ const EXERCISES = [
 ];
 SEED.push(...EXTRA_SEED.filter(x=>x && typeof x.id==='string'));
 EXERCISES.push(...EXTRA_EXERCISES.filter(x=>x && typeof x.id==='string'));
-const DEFAULT = () => ({schemaVersion:1,chancery:{cases:{},logs:[]},customItems:[],progress:{},errors:[],attempts:[],sceneLogs:[],mission:{startedAt:null,checks:{},tests:[]},adventure:{stepWins:{},episodes:{},logs:[]},mysteries:{completed:{},firstSolve:{},logs:[]},settings:{theme:'light'}});
+const DEFAULT = () => ({schemaVersion:1,vivo:{records:{},logs:[]},chancery:{cases:{},logs:[]},customItems:[],progress:{},errors:[],attempts:[],sceneLogs:[],mission:{startedAt:null,checks:{},tests:[]},adventure:{stepWins:{},episodes:{},logs:[]},mysteries:{completed:{},firstSolve:{},logs:[]},settings:{theme:'light'}});
 let db=null, storageMode='indexeddb', state=DEFAULT(), saveChain=Promise.resolve(), toastTimer;
-const ui = {tab:'home',libraryKind:'all',search:'',detailId:null,quiz:null,reviewIds:[],reviewIndex:0,revealed:false,sceneId:null,sceneDraft:'',sceneRevealed:false,sceneTurn:0,sceneResponses:[],exam:null,examResult:null,rootsOpen:false,rootsId:null,chanceryId:null,chanceryRoom:'dossier',chanceryHint:null,chanceryFeedback:null,chanceryReturn:null,mysteryId:null,mysteryStage:0,mysterySequence:[],mysteryHint:false,mysteryFeedback:null};
+const ui = {tab:'home',libraryKind:'all',search:'',detailId:null,quiz:null,reviewIds:[],reviewIndex:0,revealed:false,sceneId:null,sceneDraft:'',sceneRevealed:false,sceneTurn:0,sceneResponses:[],exam:null,examResult:null,rootsOpen:false,rootsId:null,chanceryId:null,chanceryRoom:'dossier',chanceryHint:null,chanceryFeedback:null,chanceryReturn:null,mysteryId:null,mysteryStage:0,mysterySequence:[],mysteryHint:false,mysteryFeedback:null,vivoOpen:false,vivoMode:null,vivoIndex:0,vivoDraft:'',vivoHint:false,vivoFeedback:null};
 const $ = selector => document.querySelector(selector);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const allItems = () => [...SEED,...state.customItems];
@@ -81,6 +81,7 @@ function nextDue(){return allItems().filter(item=>isDue(item.id)).sort((a,b)=>{c
 function home(){const m=metrics();const recent=nextDue();return `
   <section class="hero"><span class="eyebrow">BENVENUTO, PIETRO ✦</span><h1>Un passo alla volta. 🇮🇹</h1><p>不是为了打卡而学习，而是每天真正掌握一点意大利语。今天也来练练吧。</p><button class="btn secondary" style="margin-top:18px;color:#183547" data-action="start-quiz" data-mode="all">开始今日练习　→</button></section>
   <div class="stat-grid">${stat('样例待学 / 待复习',m.due,'初版教材，不是完整课程')}${stat('知识网络',m.total,'词汇 · 语法 · 例句 · 会话')}${stat('已巩固',m.mastered,'至少成功复习两次')}${stat('练习正确率',m.rate+'%',`${m.attempts} 次自测记录`)}</div>
+  ${vivoHomePanel()}
   ${adventureHomePanel()}
   ${archaeologyHomePanel()}
   ${chanceryBanner()}
@@ -105,7 +106,8 @@ function detail(){const item=byId(ui.detailId);if(!item)return '<div class="empt
   ${relations.length?`<div class="linked-list">${relations.map(x=>`<button class="linked" data-action="detail" data-id="${esc(x.id)}"><span><b>${esc(x.title)}</b><br/><small>${esc(KIND[x.kind])} · ${esc(x.meaning).slice(0,54)}</small></span><span>↗</span></button>`).join('')}</div>`:'<div class="empty">还没有建立关联。新增知识点时可以指定关联对象。</div>'}
  </section>`}
 function quizChoices(){const q=ui.quiz;const ex=EXERCISES.find(x=>x.id===q.ids[q.index]);if(!ex)return '<div class="empty">没有练习题。</div>';const finished=q.selected!==null;return `<div class="card exercise"><div class="eyebrow">ESERCIZIO · ${q.index+1} / ${q.ids.length}</div><div style="margin:13px 0 21px" class="progress-track"><span style="width:${100*(q.index+(finished?1:0))/q.ids.length}%"></span></div>${chip(byId(ex.itemId))}<h2>${esc(ex.prompt)}</h2><div class="answers">${ex.choices.map((choice,index)=>`<button class="answer ${finished&&index===ex.correct?'correct':''} ${finished&&index===q.selected&&index!==ex.correct?'incorrect':''}" ${finished?'disabled':''} data-action="answer" data-id="${index}"><span style="opacity:.55">${'ABC'[index]}.</span> ${esc(choice)}</button>`).join('')}</div>${finished?`<div class="feedback"><strong>${q.selected===ex.correct?'✓ Corretto! 答对了':'✕ 再记一次就好'}</strong>${esc(ex.why)}<p class="muted small" style="margin-bottom:0">相关知识：${esc(byId(ex.itemId)?.title||'')}</p></div><div style="text-align:right;margin-top:15px"><button class="btn primary" data-action="next-quiz">${q.index===q.ids.length-1?'完成训练':'下一题 →'}</button></div>`:''}</div>`}
-function practice(){if(ui.chanceryId!==null)return chanceryView();if(ui.mysteryId)return mysteryPlayView();if(ui.adventureId)return adventurePlayView();if(ui.quiz)return `${heading('Allenamento','练习结果会更新知识点的复习进度。')} ${quizChoices()}`;if(ui.sceneId)return sceneView();const count=EXERCISES.length;return `${heading('Allenamento','互动冒险 + 综合练习 + 自由表达剧场。')}
+function practice(){if(ui.vivoOpen)return vivoView();if(ui.chanceryId!==null)return chanceryView();if(ui.mysteryId)return mysteryPlayView();if(ui.adventureId)return adventurePlayView();if(ui.quiz)return `${heading('Allenamento','练习结果会更新知识点的复习进度。')} ${quizChoices()}`;if(ui.sceneId)return sceneView();const count=EXERCISES.length;return `${heading('Allenamento','互动冒险 + 综合练习 + 自由表达剧场。')}
+ ${vivoBoardPanel()}
  ${adventureMap()}
  ${chanceryBoardPanel()}
  ${mysteryMapPanel()}
@@ -142,7 +144,7 @@ function settings(){const used=state.customItems.length, logs=state.attempts.len
  <div class="notice" style="margin-top:20px">🔐 本版没有账号系统或云同步。卸载应用、清理浏览器网站数据或更换设备都可能导致数据丢失。请定期导出 JSON 备份。安装需要 HTTPS 或 localhost，直接打开 HTML 文件不能完整使用 PWA 离线安装。</div>
  <p class="muted tiny" style="margin-top:14px">存储引擎：${esc(storageMode)} · 仅加载本地代码和内置示例，无网络 API 请求。</p>`}
 function render(){renderNav();applyTheme();let html='';if(ui.detailId)html=detail();else if(ui.tab==='home')html=home();else if(ui.tab==='library')html=ui.rootsOpen?archaeologyView():library();else if(ui.tab==='practice')html=practice();else if(ui.tab==='mission')html=ui.examResult?missionExamResultView():missionView();else if(ui.tab==='review')html=review();else html=settings();$('#view').innerHTML=html;updateStorageStatus()}
-function nav(id){ui.chanceryId=null;ui.chanceryReturn=null;if(ui.exam && id!=='mission'){toast('模拟考试进行中，请先交卷或放弃。');return}ui.tab=id;ui.detailId=null;ui.quiz=null;ui.sceneId=null;ui.adventureId=null;ui.mysteryId=null;ui.rootsOpen=false;ui.rootsId=null;ui.reviewIds=[];ui.reviewIndex=0;ui.revealed=false;render();window.scrollTo(0,0)}
+function nav(id){ui.vivoOpen=false;ui.vivoMode=null;vivoReset();ui.chanceryId=null;ui.chanceryReturn=null;if(ui.exam && id!=='mission'){toast('模拟考试进行中，请先交卷或放弃。');return}ui.tab=id;ui.detailId=null;ui.quiz=null;ui.sceneId=null;ui.adventureId=null;ui.mysteryId=null;ui.rootsOpen=false;ui.rootsId=null;ui.reviewIds=[];ui.reviewIndex=0;ui.revealed=false;render();window.scrollTo(0,0)}
 function grade(id,correct,question='',source='practice'){
   const time=Date.now(), old=state.progress[id]||{ease:2.3,repetitions:0,intervalDays:0,correct:0,wrong:0};let p={...old};
   if(correct){p.repetitions+=1;p.intervalDays=p.repetitions===1?1:p.repetitions===2?3:Math.max(4,Math.round((p.intervalDays||3)*p.ease));p.ease=Math.min(3.2,p.ease+.05);p.correct+=1;for(const error of state.errors)if(error.itemId===id&&!error.resolvedAt)error.resolvedAt=time}
@@ -184,6 +186,7 @@ async function importData(file){if(!file||file.size>16*1024*1024){toast('备份�
     for(const l of Array.isArray(incomingCh.logs)?incomingCh.logs:[]){if(l&&typeof l.id==='string'&&CHANCERY_CASES.some(c=>c.id===l.caseId)&&!localCh.logs.some(x=>x.id===l.id))localCh.logs.push(l)}
     localCh.logs=localCh.logs.slice(-50);
   }
+  vivoImportFromBackup(imported.vivo);
   const inAdv=imported.adventure;if(inAdv&&typeof inAdv==='object'){const a=adventureData();for(const [k,v] of Object.entries(inAdv.stepWins||{}))if(v&&ADVENTURES.some(c=>k.startsWith(c.id+':')))a.stepWins[k]=true;for(const [k,v] of Object.entries(inAdv.episodes||{}))if(ADVENTURES.some(c=>c.id===k)&&Number.isFinite(v))a.episodes[k]=Math.max(Number(a.episodes[k]||0),v);if(Array.isArray(inAdv.logs))a.logs=uniqueById(a.logs,inAdv.logs.filter(x=>x&&typeof x.id==='string')).slice(-100)}
  if(!officialQuestions().length && Array.isArray(imported.mission?.bank)){const valid=imported.mission.bank.filter(x=>x&&typeof x.prompt==='string'&&typeof x.correct==='boolean'&&typeof x.id==='string').slice(0,8500);if(valid.length>=30){const m=missionData();m.bank=valid;m.bankMeta=imported.mission.bankMeta||{source:'从备份合并，未验证官方版本'}}}
  await save();nav('settings');toast(`✓ 已合并 ${newItems.length} 条新知识；本机已有条目保持不变。`)
@@ -205,7 +208,7 @@ function action(e){const btn=e.target.closest('[data-action]');if(!btn)return;co
   case 'export':exportData();break;
   case 'import':{const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>importData(input.files?.[0]);input.click();break}
   case 'persist':persist();break;
-  default:if(!chanceryAction(name,btn)&&!archaeologyAction(name,btn)&&!adventureAction(name,btn)&&!bankAction(name,btn))missionAction(name,btn);break;
+  default:if(!vivoAction(name,btn)&&!chanceryAction(name,btn)&&!archaeologyAction(name,btn)&&!adventureAction(name,btn)&&!bankAction(name,btn))missionAction(name,btn);break;
  }}
 async function main(){await bootStorage();applyTheme();render();document.addEventListener('click',action);$('#theme-btn').addEventListener('click',()=>{state.settings.theme=state.settings.theme==='light'?'dark':state.settings.theme==='dark'?'codex':'light';save();render()});$('#add-form').addEventListener('submit',e=>{e.preventDefault();addItem(e.target)});
  document.addEventListener('input',e=>{if(e.target.id==='library-search'){const pos=e.target.selectionStart;ui.search=e.target.value;const grid=$('#library-grid');const needle=ui.search.toLowerCase();const items=allItems().filter(item=>(ui.libraryKind==='all'||item.kind===ui.libraryKind)&&[item.title,item.meaning,item.example,...(item.tags||[])].join(' ').toLowerCase().includes(needle));if(grid)grid.innerHTML=items.length?items.map(itemCard).join(''):'<div class="empty">没有找到匹配的内容。</div>';const counter=e.target.parentElement.querySelector('span');if(counter)counter.textContent=`共 ${items.length} 项`;try{e.target.setSelectionRange(pos,pos)}catch{}}});

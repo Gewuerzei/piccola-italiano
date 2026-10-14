@@ -2,6 +2,13 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.8.0 · 2026-10-14
+
+- Added `Italiano Vivo` four-mode offline practice module (`vivo.js`, `vivo.css`): 12 NPC dialogue turns across four life scenes, 6 circumlocution challenges, 6 grammar repair tasks, and 6 root-to-modern-word tasks (30 prompts total).
+- Free-form answers compare against examples with transparent learner self-rating, not AI grading; constrained word answers use normalized exact matching and feedback.
+- Per-task first-success records and bounded attempt history under `state.vivo`; added non-destructive import merge of vivo records. IndexedDB schema remains 1; prior learning records and modules are untouched.
+- Added entry points on home and practice screens, adapted mobile styling, PWA pre-cache and Service Worker v0080.
+
 ## 0.7.1 · 2026-10-14
 
 - Hotfix: removed accidental sparse entry in `content.js` caused by `},,`, which made the home-page metrics throw `TypeError` and display “初始化失败”.
