@@ -63,7 +63,7 @@ function curriculumAction(name,btn){
   case "curriculum-open":ui.tab="library";ui.detailId=null;ui.rootsOpen=false;ui.curriculumOpen=true;ui.curriculumLevel="all";ui.curriculumNode=null;render();window.scrollTo(0,0);return true;
   case "curriculum-close":ui.curriculumOpen=false;ui.curriculumNode=null;ui.detailId=null;render();return true;
   case "curriculum-level":ui.curriculumLevel=btn.dataset.id;ui.curriculumNode=null;render();return true;
-  case "curriculum-focus":{const node=CURRICULUM_NODES.find(n=>n.id===btn.dataset.id);if(!node)return true;ui.curriculumLevel="all";ui.curriculumNode=node.id;render();return true;}
+  case "curriculum-focus":{const node=CURRICULUM_NODES.find(n=>n.id===btn.dataset.id);if(!node)return true;if(ui.curriculumLevel!=="all"&&String(node.layer)!==ui.curriculumLevel)ui.curriculumLevel=String(node.layer);ui.curriculumNode=node.id;render();return true;}
   case "curriculum-detail":{const id=btn.dataset.id;if(!byId(id))return true;ui.detailId=id;ui.tab="library";render();window.scrollTo(0,0);return true;}
   case "curriculum-play":{
    const sound=CURRICULUM_SOUNDS.find(x=>x.lang===btn.dataset.id&&x.audio);
