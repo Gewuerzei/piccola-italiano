@@ -1,16 +1,17 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.8.0
+# PROJECT_HANDOFF · Piccola Italiano v0.9.0
 
 **仓库：** `Gewuerzei/piccola-italiano`，独立于 Cassola 的 `Gewuerzei/-Piccola`。  
 **线上地址：** https://gewuerzei.github.io/piccola-italiano/  
-**当前应用版本：** `0.8.0` · **离线缓存：** `piccola-italiano-v0080`。
+**当前应用版本：** `0.9.0` · **离线缓存：** `piccola-italiano-v0090`。
 
 **施工必读：** [AGENTS.md](AGENTS.md)（行为、安全、测试） → 本文件（实时交接） → [CHANGELOG.md](CHANGELOG.md)（历史） → 读取当前 `main` 源码。禁止凭此文档假定远端代码没有变化。
 
-## 教学架构规划（S0 已记录）
+## 教学架构（S1 最小版已编写）
 
-- 新设计蓝图：[LEARNING_ARCHITECTURE.md](LEARNING_ARCHITECTURE.md)，定义五层知识深度、独立的能力证据与学习优先级，以及 S0–S5 分期验收。
-- **本次只写入设计文件；应用仍为 v0.8.0 / cache v0080。** 不已实施知识地图、能力定位或自动推荐。
-- 下一期（拟 v0.9）只施工小规模、可点开的只读知识地图（20–30个经复核的知识节点）；不对现有用户打分、不碰旧进度。
+- [LEARNING_ARCHITECTURE.md](LEARNING_ARCHITECTURE.md) 定义五层知识、能力证据、价值分类及分期路线。
+- v0.9.0 已编写25个只读知识节点与先修网络、知识卡连接和Latino in tasca发音示例。`curriculumValidate` 对节点ID、先修循环、教材/练习引用做了校验。
+- 地图**不能**判断Pietro的个人水平；尚未实现自适应定位、真实听力测评或口语批改。
+- 下一阶段先做用户iPhone实机验收，再考虑S2能力定位。
 
 ## 当前结构
 
@@ -26,9 +27,10 @@
 - `codex.js`：中古文书词源和三宗卷轴案件。
 - `chancery.js`：六宗虚构城邦案件、证据/证人、条款填词、首次裁决及本地记录。
 - `vivo.js` / `vivo.css`：Italiano Vivo 四类原创离线训练，30道题（12对话、6忘词解释、6语法纠错、6词根反推）；独立首次通关记录、参考答案与自评。
-- `sw.js`：Service Worker（`piccola-italiano-v0080`）；`manifest.webmanifest`、`icons/`：安装资源。
+- `curriculum.js` / `curriculum.css`：25个节点的五层知识地图、先修链接与教材入口、IPA/拉丁语声音示例。无成绩写入。
+- `sw.js`：Service Worker（`piccola-italiano-v0090`）；`manifest.webmanifest`、`icons/`：安装资源。
 
-**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
+**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
 
 ## 数据模型与安全
 
@@ -45,6 +47,7 @@
 
 - 生活互动剧情、语言卡片、复习、关联知识库和 Codex 外观主题。
 - 36份词源档案、9宗词源谜题、12道输入式词根挑战。
+- 五层只读知识地图（每层5个节点），包含先修关系、原有课程链接及历史发音演变示范。
 - 6宗城邦文书院调查案件：每宗4份物证、3份证词、2道条款释读题、3种判决。
 - Italiano Vivo 四种离线训练：NPC对话（固定剧情 + 用户自由回复，自评）、绕词解释（禁词表达，自评）、语法侦探（输入单词）、词根反推（输入单词），共30题。
 - 14天驾考任务与独立的题库文件导入入口。原有驾考示例题 **不是** 官方题库。
@@ -52,7 +55,7 @@
 ## 当前限制与后续验收
 
 1. 官方驾考题库的原始 TXT 解析、实际版本和题数，**尚未通过真实文件验证**。不允许做出官方题库已导入的承诺。
-2. 已做过源码语法/模拟流程验收，但不能据此断言 iPhone Safari 的语音、离线更新、存储持久化与全部触控交互已经验收。Italiano Vivo 不是AI批改，自由表达的理解和语法需学习者自己判断。
+2. 已做过源码语法/模拟流程验收，但不能据此断言 iPhone Safari 的语音、离线更新、存储持久化与全部触控交互已经验收。Italiano Vivo 不是AI批改，自由表达的理解和语法需学习者自己判断。v0.9地图的iPhone实机交互、语音及离线缓存仍待验证。
 3. 外部词典链接依赖联网；内置的原创词源解释和主要应用资源可通过 PWA 缓存离线访问（须先在线装载成功）。
 4. 非代码型文书维护不需要提升应用版本或 Service Worker 缓存编号。
 5. 如果新任务与本文件冲突，以用户明确要求及经过检查的最新仓库代码为准。
