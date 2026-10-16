@@ -1,6 +1,6 @@
 # Piccola Italiano · Learning Architecture
 
-**Status:** S0 complete; S1 curriculum shipped v0.9.0; limited S2 placement shipped v0.10.0 (2026-10-16). iPhone device QA still open. Stages S3–S5 remain planned.
+**Status:** S0 complete; S1 curriculum shipped v0.9.0; limited S2 placement shipped v0.10.0 (2026-10-16). iPhone device QA still open. S3 pathway and an initial S4 comparative studio have shipped; deeper S4 and S5 remain planned.
 
 ## Current delivered scope · S1
 
@@ -9,6 +9,10 @@
 ## Current delivered scope · S2 limited orientation
 
 `placement.js` supplies 15 authored items (five difficulty layers per reading/grammar/lexicon), drawing four per area with bounded response-dependent difficulty. The optional 'chancery orientation' permits skips, pause/resume and a non-AI self-rated free-writing prompt. `state.placement` stores only selection evidence, completion state and self-rating; the raw free-writing answer is not persisted. Reports distinguish measured quiz samples from unmeasured listening and speaking, and avoid inferring certified CEFR levels. The small pool is uncalibrated and repeated exposure can bias observations. Completed attempts in JSON backup can be merged conservatively; do not overwrite an active local attempt. Device QA pending.
+
+## Current delivered scope · S3 and S4 preview
+
+v0.11 provides five explainable, read-only study suggestions using prerequisite structure, utility and optional limited placement evidence. v0.12 adds a four-card cross-Romance studio: noctem/notte/noche/nuit, octo/otto/ocho/huit, lactem/latte/leche/lait, plus necessity constructions that are functionally comparable but not equivalent etymologies. Classical Latin IPA is explicitly reconstructed, and modern TTS requires an installed voice. Source links are pointers, not a completed academic review. Device QA remains pending.
 
 ## North star
 
