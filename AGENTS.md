@@ -38,10 +38,11 @@ chancery.js
 vivo.js
 curriculum.js
 placement.js
+pathway.js
 app.js
 ```
 
-`chancery.js` 会向前置种子集合追加内容；`vivo.js` 是离线练习模块；`curriculum.js` 是只读知识地图；`placement.js` 定义可选能力定位，二者都必须在 `app.js` 之前载入；`app.js` 必须最后加载。保持 `index.html` 与 `sw.js` 中缓存资源清单一致。
+`chancery.js` 会向前置种子集合追加内容；`vivo.js` 是离线练习模块；`curriculum.js` 是只读知识地图；`placement.js` 定义可选能力定位；`pathway.js` 根据知识先修和有限测评证据给出可解释建议；这些模块必须在 `app.js` 之前载入；`app.js` 必须最后加载。保持 `index.html` 与 `sw.js` 中缓存资源清单一致。
 
 ## 测试与发布原则
 
