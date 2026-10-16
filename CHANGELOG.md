@@ -2,6 +2,15 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.10.0 · 2026-10-16
+
+- Added `placement.js` / `placement.css`, an optional fictional chancery orientation with 15 authored questions across reading, grammar and lexicon; each session selects four prompts per dimension by a simple response-dependent rule (12 selections total).
+- Added a final written appointment-change prompt. Learners type locally, compare with an example and self-rate; raw writing is not persisted, and this is not AI grading.
+- Added skips with no wrong-answer penalty, automatic in-session difficulty adjustment, pause/resume, simple answer evidence with timestamps, and limited result history.
+- Results distinguish the three observed quiz areas from self-rated writing, while marking listening and spoken production unmeasured. All levels refer to question difficulty, not CEFR proficiency; the task bank is small and uncalibrated.
+- Added optional `state.placement` and conservative merge of completed runs from JSON backups; old IndexedDB schema 1 and earlier module data remain unchanged.
+- Updated PWA cache to `piccola-italiano-v0100`. JS unit/mock checks passed; iPhone Safari/PWA device testing pending.
+
 ## 0.9.0 · 2026-10-16
 
 - Added `curriculum.js`/`curriculum.css`: 25-node, five-layer read-only knowledge map, prerequisites, existing knowledge card links and utility metadata.
