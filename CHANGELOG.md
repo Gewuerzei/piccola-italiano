@@ -2,6 +2,13 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.12.0 · 2026-10-16
+
+- Added `bridges.js` / `bridges.css`: read-only four-card Romance comparison studio with three historical cognate sets (noctem, octo, lactem) and one non-equivalent necessity-construction comparison.
+- IPA and optional installed-voice TTS for modern Italian, Spanish and French; reconstructed Classical Latin is labeled and has no audio. Notes distinguish inherited words from similar modern grammar functions.
+- External reference entry links included; examples are teaching selections, not a completed source-by-source scholarly audit. Device voice/IPA QA remains pending.
+- Bumped offline cache to `piccola-italiano-v0120`; existing IndexedDB schema and learner data unchanged.
+
 ## 0.11.0 · 2026-10-16
 
 - Added `pathway.js` / `pathway.css`: five explainable recommendations using curriculum prerequisites, utility tags and optional latest limited placement evidence.
