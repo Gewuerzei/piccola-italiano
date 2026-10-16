@@ -45,6 +45,7 @@
 | [PROJECT_HANDOFF.md](PROJECT_HANDOFF.md) | 当前模块、状态、风险与交接 |
 | [CHANGELOG.md](CHANGELOG.md) | 版本变更历史 |
 | [DEPLOY_GITHUB.md](DEPLOY_GITHUB.md) | 已有 Pages 项目的维护、部署和验收 |
+| [LEARNING_ARCHITECTURE.md](LEARNING_ARCHITECTURE.md) | 知识分层、能力定位与跨语言迁移的分期设计蓝图（尚未上线） |
 
 后续版本功能沿革请看 CHANGELOG，不把每次修改都重复堆进 README。
 
