@@ -80,6 +80,40 @@ Latin is an **always-available explanatory companion** to Italian, not a new pre
 **Build incrementally:** Stage S1 can annotate a *small number* of verified existing nodes with optional Latin notes (e.g. notte/noctem, otto/octo, latte/lactem) only when the current node and source exist; unverified notes stay absent. S2 placement never requires Latin to prove everyday Italian ability. At S3, Latin notes can support memory and conceptual understanding, but are not mandatory for language-use mastery. Stages S4–S5 add structured historical and multilingual comparisons. Make every sidecar dismissible and keep the main task short.
 
 **Engineering boundary:** No new user-data field is needed for read-only Latin hints. Preserve existing etymology IDs, source links and item progress. The learner may opt into active Latin study later, but the default Italian path remains intact.
+## Pronunciation track · Sound is part of the atlas
+
+Written cognates are not enough. Learners should be able to **hear**, **compare**, **slow down**, and **see IPA** for each independently verified language form. Pronunciation belongs alongside the Latin companion at every learning layer, and later gains its own historical-phonology map.
+
+### Example comparison (general teaching notation)
+
+| Language and variety | Form | Illustrative IPA |
+| --- | --- | --- |
+| Reconstructed Classical Latin, accusative | noctem | /ˈnɔk.tɛm/ |
+| Standard Italian | notte | /ˈnɔt.te/ |
+| Standard Spanish | noche | /ˈno.tʃe/ |
+| Standard Metropolitan French | nuit | /nɥi/ |
+
+Phoneme strings illustrate broad contrasts; authentic speech varies by region and speaker. Teach Latin `-ct-` to Italian `-tt-` alongside Spanish palatalized developments, but do not suggest French inherited its sound from Italian. Separate reconstructed Classical Latin, later colloquial Latin and Italian-influenced ecclesiastical Latin. Pronunciation of a historical reconstruction should **never be presented as an actual ancient recording**.
+
+### Data contract for each pronunciation sample
+
+- `language` (BCP-47 where supported; `la` for Latin in metadata), `variety`, `period`, `form`, `ipa`, `stress`, `syllables`.
+- `phonologyNote` with a short explanation of the key sound change; attach reliable sources and a confidence status.
+- `audioMode`: `native_tts`, `verified_recording`, or `no_audio`; a trustworthy supported voice or licensed recording must be available before showing a working listen button.
+- `playbackLocale`: e.g. `it-IT`, `es-ES`, `fr-FR` for modern languages when supported; **do not silently synthesize Latin with an Italian voice or label it authentic reconstructed Latin**.
+- Avoid assuming two languages with identical spelling share pronunciation; allow explicitly selected varieties and accent-specific variants without flooding novice learners.
+
+### Progressive delivery
+
+- **Stage S1 (proposed v0.9):** introduce IPA display and optional modern-Italian sound playback for *a few curated knowledge-map items*. Check actual device `speechSynthesis.getVoices()` availability; show unavailable or text-only gracefully. Do not require network or audio for completing the Italian lesson.
+- **Stage S2:** add optional recognition/listening probes only where actual comparable audio is available. No audio playback means **unmeasured listening**, not failure. Speech recognition, if ever added, cannot be presumed available offline or accurate.
+- **Stage S3:** add phonetic contrast drills (listen, choose, repeat, compare), pitch/speed control only as supported by the voice source. Careful with synthesized slow speech changing timing quality.
+- **Stage S4:** multilingual comparisons with language-appropriate modern TTS/verified clips and side-by-side IPA. Preserve individual language tags and accent labels. Latin audio only after a reliable reading convention and a compatible audio source are selected.
+- **Stage S5:** interactive historical sound-change paths and variants with dated provenance; reconstructed pronunciation labeled as reconstruction throughout.
+
+### Testing and rights
+
+Test voice availability, default accent, offline availability, player interruption and retry on iPhone Safari/PWA. Voice assets, if hosted, need proper permission/license, size constraints and PWA cache budgeting. Never imply browser TTS availability or pronunciation accuracy just because the Web Speech API exists.
 ## Non-destructive rules
 
 - The source of truth is current main code, not this document or conversation memory.
