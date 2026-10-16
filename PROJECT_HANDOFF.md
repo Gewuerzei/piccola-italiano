@@ -1,8 +1,8 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.11.0
+# PROJECT_HANDOFF · Piccola Italiano v0.12.0
 
 **仓库：** `Gewuerzei/piccola-italiano`，独立于 Cassola 的 `Gewuerzei/-Piccola`。  
 **线上地址：** https://gewuerzei.github.io/piccola-italiano/  
-**当前应用版本：** `0.11.0` · **离线缓存：** `piccola-italiano-v0110`。
+**当前应用版本：** `0.12.0` · **离线缓存：** `piccola-italiano-v0120`。
 
 **施工必读：** [AGENTS.md](AGENTS.md)（行为、安全、测试） → 本文件（实时交接） → [CHANGELOG.md](CHANGELOG.md)（历史） → 读取当前 `main` 源码。禁止凭此文档假定远端代码没有变化。
 
@@ -12,7 +12,7 @@
 - v0.9.0 已编写25个只读知识节点与先修网络、知识卡连接和Latino in tasca发音示例。`curriculumValidate` 对节点ID、先修循环、教材/练习引用做了校验。
 - 地图本身不判定个人能力；v0.10新增可跳过的探索式定位：三方向各4道选择题、按答题表现调节难度，以及一项写作自评。它只是未经心理测量学校准的小规模任务观察，**不是** CEFR 评级，也不能推断真实口语或听力。
 - 实现了暂停续做、本地保存最近8轮结果以及非破坏性备份合并；自由写作原文只用于本轮屏幕自评，不保存或上传。
-- 下一阶段先由用户验收 v0.9 地图与 v0.10 测评的 iPhone 实机表现，再设计 S3 可解释的学习建议，不以此测评宣称完整掌握程度。
+- 下一阶段先由用户验收 v0.9 地图与 v0.10 测评的 iPhone 实机表现，继续完善 S3 可解释的学习建议与 S4 比较语言课程，不以此测评宣称完整掌握程度。
 
 ## 当前结构
 
@@ -31,9 +31,10 @@
 - `curriculum.js` / `curriculum.css`：25个节点的五层知识地图、先修链接与教材入口、IPA/拉丁语声音示例。无成绩写入。
 - `placement.js` / `placement.css`：文书院可选定位、15道自编题池（每方向5级各1题）、每次12道适应性选择题 + 1项自由写作自评、分方向观察报告。
 - `pathway.js` / `pathway.css`：只读个人学习建议，结合先修节点、课程实用性及最近有限测评证据；不修改成绩或复习安排。
-- `sw.js`：Service Worker（`piccola-italiano-v0090`）；`manifest.webmanifest`、`icons/`：安装资源。
+- `bridges.js` / `bridges.css`：只读罗曼语对照，3组同源词和1组功能相近但非同源的必要性句型；标准现代语音依赖设备可用voice，拉丁语仅展示重建IPA。
+- `sw.js`：Service Worker（`piccola-italiano-v0120`）；`manifest.webmanifest`、`icons/`：安装资源。
 
-**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → pathway → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
+**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → pathway → bridges → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
 
 ## 数据模型与安全
 
@@ -58,6 +59,8 @@
 - 14天驾考任务与独立的题库文件导入入口。原有驾考示例题 **不是** 官方题库。
 
 - v0.11已新增可解释的五项学习建议和知识地图跳转；仍属启发式排序，非CEFR能力评级。
+
+- v0.12新增可选跨语言实验室；比较例子有外部参考入口，但尚未经完整学术来源逐项审定。
 
 ## 当前限制与后续验收
 
