@@ -1,8 +1,8 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.12.0
+# PROJECT_HANDOFF · Piccola Italiano v0.13.0
 
 **仓库：** `Gewuerzei/piccola-italiano`，独立于 Cassola 的 `Gewuerzei/-Piccola`。  
 **线上地址：** https://gewuerzei.github.io/piccola-italiano/  
-**当前应用版本：** `0.12.0` · **离线缓存：** `piccola-italiano-v0120`。
+**当前应用版本：** `0.13.0` · **离线缓存：** `piccola-italiano-v0130`。
 
 **施工必读：** [AGENTS.md](AGENTS.md)（行为、安全、测试） → 本文件（实时交接） → [CHANGELOG.md](CHANGELOG.md)（历史） → 读取当前 `main` 源码。禁止凭此文档假定远端代码没有变化。
 
@@ -32,9 +32,10 @@
 - `placement.js` / `placement.css`：文书院可选定位、15道自编题池（每方向5级各1题）、每次12道适应性选择题 + 1项自由写作自评、分方向观察报告。
 - `pathway.js` / `pathway.css`：只读个人学习建议，结合先修节点、课程实用性及最近有限测评证据；不修改成绩或复习安排。
 - `bridges.js` / `bridges.css`：只读罗曼语对照，3组同源词和1组功能相近但非同源的必要性句型；标准现代语音依赖设备可用voice，拉丁语仅展示重建IPA。
-- `sw.js`：Service Worker（`piccola-italiano-v0120`）；`manifest.webmanifest`、`icons/`：安装资源。
+- `transfer.js` / `transfer.css`：6道离线语言迁移练习，作答后展示解释与局限；仅页面内暂存，不写入分数或存储。
+- `sw.js`：Service Worker（`piccola-italiano-v0130`）；`manifest.webmanifest`、`icons/`：安装资源。
 
-**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → pathway → bridges → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
+**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → pathway → bridges → transfer → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
 
 ## 数据模型与安全
 
@@ -61,6 +62,8 @@
 - v0.11已新增可解释的五项学习建议和知识地图跳转；仍属启发式排序，非CEFR能力评级。
 
 - v0.12新增可选跨语言实验室；比较例子有外部参考入口，但尚未经完整学术来源逐项审定。
+
+- v0.13新增语言迁移实验室，选择题仅供即时学习，不代表独立产出能力或CEFR水平。
 
 ## 当前限制与后续验收
 
