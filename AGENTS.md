@@ -36,15 +36,16 @@ excavation.js
 codex.js
 chancery.js
 vivo.js
+curriculum.js
 app.js
 ```
 
-`chancery.js` 会向前置种子集合追加内容；`vivo.js` 是离线练习模块，必须在 `app.js` 之前载入；`app.js` 必须最后加载。保持 `index.html` 与 `sw.js` 中缓存资源清单一致。
+`chancery.js` 会向前置种子集合追加内容；`vivo.js` 是离线练习模块；`curriculum.js` 是只读知识地图，必须在 `app.js` 之前载入；`app.js` 必须最后加载。保持 `index.html` 与 `sw.js` 中缓存资源清单一致。
 
 ## 测试与发布原则
 
 - 语法检查覆盖所有 JS；没有验证运行就不能宣称功能验收完成。
-- 至少测试正常导航、主题切换、词源返回、案件答案纠错、首次裁决不重复计分、Italiano Vivo 四模式文字交互/首次通关计分、旧数据保留以及导出/合并逻辑。
+- 至少测试正常导航、主题切换、词源返回、案件答案纠错、首次裁决不重复计分、Italiano Vivo 四模式文字交互/首次通关计分、知识地图节点有效性/先修无环/导航及现代语音缺失回退、旧数据保留以及导出/合并逻辑。
 - 有实际运行文件变化时，检查 Service Worker 缓存版本是否需要变更，确保新资源离线可用。**纯文档修改不需要升级缓存。**
 - GitHub Pages 采用 `main` / `/ (root)`；确认最终工作流 `completed / success` 才能宣称成功部署。
 - 本地浏览器模拟不等于 iPhone Safari/PWA 设备验收。未测的功能应如实标注。
