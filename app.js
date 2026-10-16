@@ -1,6 +1,6 @@
-/* Piccola Italiano · 0.11.0 · local-first, framework-free */
+/* Piccola Italiano · 0.12.0 · local-first, framework-free */
 'use strict';
-const VERSION = '0.11.0';
+const VERSION = '0.12.0';
 const KIND = {word:'词汇',grammar:'语法',sentence:'例句',scene:'会话'};
 const KINDS = {word:'Vocabolario',grammar:'Grammatica',sentence:'Frasi',scene:'Conversazione'};
 const NAV = [
@@ -51,7 +51,7 @@ SEED.push(...EXTRA_SEED.filter(x=>x && typeof x.id==='string'));
 EXERCISES.push(...EXTRA_EXERCISES.filter(x=>x && typeof x.id==='string'));
 const DEFAULT = () => ({schemaVersion:1,placement:{active:null,history:[]},vivo:{records:{},logs:[]},chancery:{cases:{},logs:[]},customItems:[],progress:{},errors:[],attempts:[],sceneLogs:[],mission:{startedAt:null,checks:{},tests:[]},adventure:{stepWins:{},episodes:{},logs:[]},mysteries:{completed:{},firstSolve:{},logs:[]},settings:{theme:'light'}});
 let db=null, storageMode='indexeddb', state=DEFAULT(), saveChain=Promise.resolve(), toastTimer;
-const ui = {tab:'home',libraryKind:'all',search:'',detailId:null,quiz:null,reviewIds:[],reviewIndex:0,revealed:false,sceneId:null,sceneDraft:'',sceneRevealed:false,sceneTurn:0,sceneResponses:[],exam:null,examResult:null,rootsOpen:false,rootsId:null,chanceryId:null,chanceryRoom:'dossier',chanceryHint:null,chanceryFeedback:null,chanceryReturn:null,mysteryId:null,mysteryStage:0,mysterySequence:[],mysteryHint:false,mysteryFeedback:null,curriculumOpen:false,curriculumLevel:'all',curriculumNode:null,placementOpen:false,placementWritingRevealed:false,pathwayOpen:false,vivoOpen:false,vivoMode:null,vivoIndex:0,vivoDraft:'',vivoHint:false,vivoFeedback:null};
+const ui = {tab:'home',libraryKind:'all',search:'',detailId:null,quiz:null,reviewIds:[],reviewIndex:0,revealed:false,sceneId:null,sceneDraft:'',sceneRevealed:false,sceneTurn:0,sceneResponses:[],exam:null,examResult:null,rootsOpen:false,rootsId:null,chanceryId:null,chanceryRoom:'dossier',chanceryHint:null,chanceryFeedback:null,chanceryReturn:null,mysteryId:null,mysteryStage:0,mysterySequence:[],mysteryHint:false,mysteryFeedback:null,curriculumOpen:false,curriculumLevel:'all',curriculumNode:null,placementOpen:false,placementWritingRevealed:false,pathwayOpen:false,bridgeOpen:false,bridgeId:'night',vivoOpen:false,vivoMode:null,vivoIndex:0,vivoDraft:'',vivoHint:false,vivoFeedback:null};
 const $ = selector => document.querySelector(selector);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const allItems = () => [...SEED,...state.customItems];
@@ -84,6 +84,7 @@ function home(){const m=metrics();const recent=nextDue();return `
   ${curriculumPanel()}
   ${placementPanel()}
   ${pathwayPanel()}
+  ${bridgePanel()}
   ${vivoHomePanel()}
   ${adventureHomePanel()}
   ${archaeologyHomePanel()}
@@ -147,8 +148,8 @@ function settings(){const used=state.customItems.length, logs=state.attempts.len
  <div class="stat-grid">${stat('自建条目',used,'存储在本机')}${stat('练习次数',logs,'包含选择题与复习')}${stat('会话练习',sc,'含自由输入文本')}${stat('当前版本',VERSION,'离线优先')}</div>
  <div class="notice" style="margin-top:20px">🔐 本版没有账号系统或云同步。卸载应用、清理浏览器网站数据或更换设备都可能导致数据丢失。请定期导出 JSON 备份。安装需要 HTTPS 或 localhost，直接打开 HTML 文件不能完整使用 PWA 离线安装。</div>
  <p class="muted tiny" style="margin-top:14px">存储引擎：${esc(storageMode)} · 仅加载本地代码和内置示例，无网络 API 请求。</p>`}
-function render(){renderNav();applyTheme();let html='';if(ui.pathwayOpen)html=pathwayView();else if(ui.placementOpen)html=placementView();else if(ui.detailId)html=detail();else if(ui.tab==='home')html=home();else if(ui.tab==='library')html=ui.rootsOpen?archaeologyView():ui.curriculumOpen?curriculumView():library();else if(ui.tab==='practice')html=practice();else if(ui.tab==='mission')html=ui.examResult?missionExamResultView():missionView();else if(ui.tab==='review')html=review();else html=settings();$('#view').innerHTML=html;updateStorageStatus()}
-function nav(id){ui.vivoOpen=false;ui.vivoMode=null;vivoReset();ui.chanceryId=null;ui.chanceryReturn=null;if(ui.exam && id!=='mission'){toast('模拟考试进行中，请先交卷或放弃。');return}ui.tab=id;ui.detailId=null;ui.placementOpen=false;ui.placementWritingRevealed=false;ui.pathwayOpen=false;ui.curriculumOpen=false;ui.curriculumNode=null;ui.quiz=null;ui.sceneId=null;ui.adventureId=null;ui.mysteryId=null;ui.rootsOpen=false;ui.rootsId=null;ui.reviewIds=[];ui.reviewIndex=0;ui.revealed=false;render();window.scrollTo(0,0)}
+function render(){renderNav();applyTheme();let html='';if(ui.bridgeOpen)html=bridgeView();else if(ui.pathwayOpen)html=pathwayView();else if(ui.placementOpen)html=placementView();else if(ui.detailId)html=detail();else if(ui.tab==='home')html=home();else if(ui.tab==='library')html=ui.rootsOpen?archaeologyView():ui.curriculumOpen?curriculumView():library();else if(ui.tab==='practice')html=practice();else if(ui.tab==='mission')html=ui.examResult?missionExamResultView():missionView();else if(ui.tab==='review')html=review();else html=settings();$('#view').innerHTML=html;updateStorageStatus()}
+function nav(id){ui.vivoOpen=false;ui.vivoMode=null;vivoReset();ui.chanceryId=null;ui.chanceryReturn=null;if(ui.exam && id!=='mission'){toast('模拟考试进行中，请先交卷或放弃。');return}ui.tab=id;ui.detailId=null;ui.placementOpen=false;ui.placementWritingRevealed=false;ui.pathwayOpen=false;ui.bridgeOpen=false;ui.curriculumOpen=false;ui.curriculumNode=null;ui.quiz=null;ui.sceneId=null;ui.adventureId=null;ui.mysteryId=null;ui.rootsOpen=false;ui.rootsId=null;ui.reviewIds=[];ui.reviewIndex=0;ui.revealed=false;render();window.scrollTo(0,0)}
 function grade(id,correct,question='',source='practice'){
   const time=Date.now(), old=state.progress[id]||{ease:2.3,repetitions:0,intervalDays:0,correct:0,wrong:0};let p={...old};
   if(correct){p.repetitions+=1;p.intervalDays=p.repetitions===1?1:p.repetitions===2?3:Math.max(4,Math.round((p.intervalDays||3)*p.ease));p.ease=Math.min(3.2,p.ease+.05);p.correct+=1;for(const error of state.errors)if(error.itemId===id&&!error.resolvedAt)error.resolvedAt=time}
@@ -199,7 +200,7 @@ async function importData(file){if(!file||file.size>16*1024*1024){toast('备份�
 async function persist(){if(!navigator.storage?.persist){toast('当前浏览器不支持持久存储申请，请定期导出备份');return}try{const granted=await navigator.storage.persist();toast(granted?'✓ 浏览器已批准持久化存储':'浏览器未批准持久化存储，建议定期备份')}catch{toast('权限申请失败，请定期备份')}}
 function action(e){const btn=e.target.closest('[data-action]');if(!btn)return;const name=btn.dataset.action,id=btn.dataset.id;switch(name){
   case 'nav':nav(id);break;
-  case 'curriculum-open':ui.pathwayOpen=false;ui.placementOpen=false;curriculumAction(name,btn);break;case 'kind':ui.libraryKind=id;ui.detailId=null;render();break;
+  case 'curriculum-open':ui.bridgeOpen=false;ui.pathwayOpen=false;ui.placementOpen=false;curriculumAction(name,btn);break;case 'kind':ui.libraryKind=id;ui.detailId=null;render();break;
   case 'detail':ui.detailId=id;ui.tab='library';ui.quiz=null;ui.reviewIds=[];ui.sceneId=null;render();window.scrollTo(0,0);break;
   case 'open-modal':prepareDialog();break;case 'close-modal':$('#add-dialog').close();break;
   case 'start-quiz':quizStart(btn.dataset.mode);break;case 'quiz-item':quizStart(null,id);break;
@@ -214,7 +215,7 @@ function action(e){const btn=e.target.closest('[data-action]');if(!btn)return;co
   case 'export':exportData();break;
   case 'import':{const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>importData(input.files?.[0]);input.click();break}
   case 'persist':persist();break;
-  default:if(!pathwayAction(name,btn)&&!placementAction(name,btn)&&!curriculumAction(name,btn)&&!vivoAction(name,btn)&&!chanceryAction(name,btn)&&!archaeologyAction(name,btn)&&!adventureAction(name,btn)&&!bankAction(name,btn))missionAction(name,btn);break;
+  default:if(!bridgeAction(name,btn)&&!pathwayAction(name,btn)&&!placementAction(name,btn)&&!curriculumAction(name,btn)&&!vivoAction(name,btn)&&!chanceryAction(name,btn)&&!archaeologyAction(name,btn)&&!adventureAction(name,btn)&&!bankAction(name,btn))missionAction(name,btn);break;
  }}
 async function main(){await bootStorage();applyTheme();render();document.addEventListener('click',action);$('#theme-btn').addEventListener('click',()=>{state.settings.theme=state.settings.theme==='light'?'dark':state.settings.theme==='dark'?'codex':'light';save();render()});$('#add-form').addEventListener('submit',e=>{e.preventDefault();addItem(e.target)});
  document.addEventListener('input',e=>{if(e.target.id==='library-search'){const pos=e.target.selectionStart;ui.search=e.target.value;const grid=$('#library-grid');const needle=ui.search.toLowerCase();const items=allItems().filter(item=>(ui.libraryKind==='all'||item.kind===ui.libraryKind)&&[item.title,item.meaning,item.example,...(item.tags||[])].join(' ').toLowerCase().includes(needle));if(grid)grid.innerHTML=items.length?items.map(itemCard).join(''):'<div class="empty">没有找到匹配的内容。</div>';const counter=e.target.parentElement.querySelector('span');if(counter)counter.textContent=`共 ${items.length} 项`;try{e.target.setSelectionRange(pos,pos)}catch{}}});
