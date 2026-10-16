@@ -1,10 +1,14 @@
 # Piccola Italiano · Learning Architecture
 
-**Status:** S0 complete; Stage S1 code landed in v0.9.0 (2026-10-16). Read-only knowledge map exists; iPhone device QA remains open. Stages S2–S5 are still planned.
+**Status:** S0 complete; S1 curriculum shipped v0.9.0; limited S2 placement shipped v0.10.0 (2026-10-16). iPhone device QA still open. Stages S3–S5 remain planned.
 
 ## Current delivered scope · S1
 
 `curriculum.js` defines 25 teaching nodes, five per layer, with prerequisite connections, existing content references and a simple validator. The PWA shows the map through Home and Library, without storing learner scores. `curriculum.css` provides responsive cards. The Latin sound-lab demo shows IPA and modern-language TTS buttons only if corresponding device voices exist. Ancient Latin audio is not fabricated. iPhone PWA/offline/audio device verification is still outstanding.
+
+## Current delivered scope · S2 limited orientation
+
+`placement.js` supplies 15 authored items (five difficulty layers per reading/grammar/lexicon), drawing four per area with bounded response-dependent difficulty. The optional 'chancery orientation' permits skips, pause/resume and a non-AI self-rated free-writing prompt. `state.placement` stores only selection evidence, completion state and self-rating; the raw free-writing answer is not persisted. Reports distinguish measured quiz samples from unmeasured listening and speaking, and avoid inferring certified CEFR levels. The small pool is uncalibrated and repeated exposure can bias observations. Completed attempts in JSON backup can be merged conservatively; do not overwrite an active local attempt. Device QA pending.
 
 ## North star
 
