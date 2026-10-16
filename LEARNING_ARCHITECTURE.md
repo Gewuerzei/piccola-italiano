@@ -1,6 +1,10 @@
 # Piccola Italiano · Learning Architecture
 
-**Status:** Design Stage S0, 2026-10-16. Runtime remains v0.8.0. This is a design document, not a released feature.
+**Status:** S0 complete; Stage S1 code landed in v0.9.0 (2026-10-16). Read-only knowledge map exists; iPhone device QA remains open. Stages S2–S5 are still planned.
+
+## Current delivered scope · S1
+
+`curriculum.js` defines 25 teaching nodes, five per layer, with prerequisite connections, existing content references and a simple validator. The PWA shows the map through Home and Library, without storing learner scores. `curriculum.css` provides responsive cards. The Latin sound-lab demo shows IPA and modern-language TTS buttons only if corresponding device voices exist. Ancient Latin audio is not fabricated. iPhone PWA/offline/audio device verification is still outstanding.
 
 ## North star
 
