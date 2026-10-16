@@ -2,6 +2,14 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.9.0 · 2026-10-16
+
+- Added `curriculum.js`/`curriculum.css`: 25-node, five-layer read-only knowledge map, prerequisites, existing knowledge card links and utility metadata.
+- Entry points on Home and Library with layer tabs and node-detail navigation. No new learner level, score, persistence field or false adaptive-assessment claim.
+- Added a `Latino in tasca` sound lab preview: reconstructed Classical Latin IPA for noctem, modern Italian notte, Spanish noche and French nuit. Optional browser TTS for modern languages is attempted only with a matching installed voice; no fabricated ancient recording.
+- Validated graph references and acyclicity; JS syntax and synthetic map rendering passed. Real iPhone Safari/offline/audio testing remains outstanding.
+- Preserved IndexedDB schemaVersion=1, existing study progress and all earlier game modes. Service Worker cache v0090.
+
 ## 0.8.0 · 2026-10-14
 
 - Added `Italiano Vivo` four-mode offline practice module (`vivo.js`, `vivo.css`): 12 NPC dialogue turns across four life scenes, 6 circumlocution challenges, 6 grammar repair tasks, and 6 root-to-modern-word tasks (30 prompts total).
