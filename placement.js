@@ -27,7 +27,7 @@ function placementCurrentQuestion(s){
  if(!track||track.answers.length>=PLACEMENT_MAX_ITEMS)return null;
  const used=new Set(track.answers.map(x=>x.questionId));
  const options=PLACEMENT_ITEMS.filter(x=>x.dimension===s.phase&&!used.has(x.id));
- options.sort((a,b)=>Math.abs(a.layer-track.level)-Math.abs(b.layer-track.level)||a.layer-b.layer);
+ options.sort((a,b)=>Math.abs(a.layer-track.level)-Math.abs(b.layer-track.level)||b.layer-a.layer);
  return options[0]||null;
 }
 function placementAdvance(s){
