@@ -61,6 +61,25 @@ Recommend using prerequisites + utility + due reviews + evidence uncertainty + l
 
 Stage 4 compares Italian conditionals, aspect, mood, clause structure and etymology with Spanish, French, Portuguese, Romanian and others. Mark false friends and structures that are not directly equivalent. Stage 5 can extend into a historically sourced language atlas.
 
+## Latin companion: Latino in tasca (cross-cutting curriculum)
+
+Latin is an **always-available explanatory companion** to Italian, not a new prerequisite course or a sixth level. When an Italian learning item invites a useful historical explanation, learners can open a short Latin sidecar. Default focus remains on usable contemporary Italian.
+
+| Italian layer | Optional Latin companion |
+| --- | --- |
+| L1 Fondamenta | A short, source-checked Latin ancestor alongside useful modern vocabulary, without declension memorization |
+| L2 Autonomia | Repeatable sound changes and word-formation patterns, distinguishing regular changes from coincidences |
+| L3 Connessioni | Compare specific Italian constructions with selected Latin patterns and note where the syntax is not equivalent |
+| L4 Precisione | Explain aspects of the development of subordination, mood, tense and modal meanings without substituting historical rules for current Italian |
+| L5 Metalinguaggio | Original Latin morphology, case systems, historical sources and cross-Romance comparisons, available to motivated learners |
+
+**Micro-example:** Latin accusative *noctem* > Italian *notte*; Latin *octo* > Italian *otto*; Latin accusative *lactem* > Italian *latte*. Explain the common `-ct-` > `-tt-` correspondence as a simplified historical pattern, not an exceptionless mechanical translator. Related Spanish *noche* and French *nuit* are parallel descendants, not descendants of modern Italian.
+
+**Accuracy gates:** Classical written Latin is not identical to the diverse spoken Latin varieties from which Romance languages developed. Distinguish inherited vernacular words, learned Latin loans, Greek or other borrowings, reborrowings, and later analogical formations. Store source, original form with inflection/case where relevant, modern form, historically supported link, confidence and any disputed explanations. Never infer etymology solely because words look similar; avoid copying dictionary definitions.
+
+**Build incrementally:** Stage S1 can annotate a *small number* of verified existing nodes with optional Latin notes (e.g. notte/noctem, otto/octo, latte/lactem) only when the current node and source exist; unverified notes stay absent. S2 placement never requires Latin to prove everyday Italian ability. At S3, Latin notes can support memory and conceptual understanding, but are not mandatory for language-use mastery. Stages S4–S5 add structured historical and multilingual comparisons. Make every sidecar dismissible and keep the main task short.
+
+**Engineering boundary:** No new user-data field is needed for read-only Latin hints. Preserve existing etymology IDs, source links and item progress. The learner may opt into active Latin study later, but the default Italian path remains intact.
 ## Non-destructive rules
 
 - The source of truth is current main code, not this document or conversation memory.
