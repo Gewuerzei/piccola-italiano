@@ -1,8 +1,8 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.10.0
+# PROJECT_HANDOFF · Piccola Italiano v0.11.0
 
 **仓库：** `Gewuerzei/piccola-italiano`，独立于 Cassola 的 `Gewuerzei/-Piccola`。  
 **线上地址：** https://gewuerzei.github.io/piccola-italiano/  
-**当前应用版本：** `0.10.0` · **离线缓存：** `piccola-italiano-v0100`。
+**当前应用版本：** `0.11.0` · **离线缓存：** `piccola-italiano-v0110`。
 
 **施工必读：** [AGENTS.md](AGENTS.md)（行为、安全、测试） → 本文件（实时交接） → [CHANGELOG.md](CHANGELOG.md)（历史） → 读取当前 `main` 源码。禁止凭此文档假定远端代码没有变化。
 
@@ -30,9 +30,10 @@
 - `vivo.js` / `vivo.css`：Italiano Vivo 四类原创离线训练，30道题（12对话、6忘词解释、6语法纠错、6词根反推）；独立首次通关记录、参考答案与自评。
 - `curriculum.js` / `curriculum.css`：25个节点的五层知识地图、先修链接与教材入口、IPA/拉丁语声音示例。无成绩写入。
 - `placement.js` / `placement.css`：文书院可选定位、15道自编题池（每方向5级各1题）、每次12道适应性选择题 + 1项自由写作自评、分方向观察报告。
+- `pathway.js` / `pathway.css`：只读个人学习建议，结合先修节点、课程实用性及最近有限测评证据；不修改成绩或复习安排。
 - `sw.js`：Service Worker（`piccola-italiano-v0090`）；`manifest.webmanifest`、`icons/`：安装资源。
 
-**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
+**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → pathway → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
 
 ## 数据模型与安全
 
@@ -55,6 +56,8 @@
 - 6宗城邦文书院调查案件：每宗4份物证、3份证词、2道条款释读题、3种判决。
 - Italiano Vivo 四种离线训练：NPC对话（固定剧情 + 用户自由回复，自评）、绕词解释（禁词表达，自评）、语法侦探（输入单词）、词根反推（输入单词），共30题。
 - 14天驾考任务与独立的题库文件导入入口。原有驾考示例题 **不是** 官方题库。
+
+- v0.11已新增可解释的五项学习建议和知识地图跳转；仍属启发式排序，非CEFR能力评级。
 
 ## 当前限制与后续验收
 
