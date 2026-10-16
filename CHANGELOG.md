@@ -2,6 +2,12 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.11.0 · 2026-10-16
+
+- Added `pathway.js` / `pathway.css`: five explainable recommendations using curriculum prerequisites, utility tags and optional latest limited placement evidence.
+- Added homepage entry, knowledge-map deep links and placement navigation. Recommendations are heuristic and read-only, not CEFR placement or certified learning outcomes.
+- Updated offline cache to `piccola-italiano-v0110`; IndexedDB schema unchanged. iPhone device QA pending.
+
 ## 0.10.0 · 2026-10-16
 
 - Added `placement.js` / `placement.css`, an optional fictional chancery orientation with 15 authored questions across reading, grammar and lexicon; each session selects four prompts per dimension by a simple response-dependent rule (12 selections total).
