@@ -1,6 +1,6 @@
-/* Piccola Italiano v0.8.0 - offline app shell, no remote dependencies */
-const CACHE = 'piccola-italiano-v0080';
-const ASSETS = ['./', './index.html', './styles.css', './vivo.css?v=080', './app.js?v=080', './content.js?v=071', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './chancery.js', './vivo.js?v=080', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+/* Piccola Italiano v0.9.0 - offline app shell, no remote dependencies */
+const CACHE = 'piccola-italiano-v0090';
+const ASSETS = ['./', './index.html', './styles.css', './vivo.css?v=080', './curriculum.css?v=090', './app.js?v=090', './content.js?v=071', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './chancery.js', './vivo.js?v=080', './curriculum.js?v=090', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
