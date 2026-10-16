@@ -1,6 +1,6 @@
-/* Piccola Italiano v0.10.0 - offline app shell, no remote dependencies */
-const CACHE = 'piccola-italiano-v0100';
-const ASSETS = ['./', './index.html', './styles.css', './vivo.css?v=080', './curriculum.css?v=090', './placement.css?v=0100', './app.js?v=0100', './content.js?v=071', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './chancery.js', './vivo.js?v=080', './curriculum.js?v=090', './placement.js?v=0100', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+/* Piccola Italiano v0.11.0 - offline app shell, no remote dependencies */
+const CACHE = 'piccola-italiano-v0110';
+const ASSETS = ['./', './index.html', './styles.css', './vivo.css?v=080', './curriculum.css?v=090', './placement.css?v=0100', './pathway.css?v=0110', './app.js?v=0110', './content.js?v=071', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './chancery.js', './vivo.js?v=080', './curriculum.js?v=090', './placement.js?v=0100', './pathway.js?v=0110', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
