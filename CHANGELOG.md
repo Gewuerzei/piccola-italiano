@@ -2,6 +2,12 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.13.0 · 2026-10-16
+
+- Added `transfer.js` / `transfer.css` with six original multiple-choice transfer exercises and explanations of historical sound correspondences, functional grammar comparisons and false friends.
+- Users can skip without penalty, restart, or jump to a related bridge. Answers stay in ephemeral UI state; no grade, XP, progress or database changes.
+- Added homepage entry and PWA precache v0130. Browser/device interaction QA remains pending.
+
 ## 0.12.0 · 2026-10-16
 
 - Added `bridges.js` / `bridges.css`: read-only four-card Romance comparison studio with three historical cognate sets (noctem, octo, lactem) and one non-equivalent necessity-construction comparison.
