@@ -14,6 +14,10 @@
 
 v0.11 provides five explainable, read-only study suggestions using prerequisite structure, utility and optional limited placement evidence. v0.12 adds a four-card cross-Romance studio: noctem/notte/noche/nuit, octo/otto/ocho/huit, lactem/latte/leche/lait, plus necessity constructions that are functionally comparable but not equivalent etymologies. Classical Latin IPA is explicitly reconstructed, and modern TTS requires an installed voice. Source links are pointers, not a completed academic review. Device QA remains pending.
 
+## Current delivered scope · S4 transfer preview
+
+v0.13 adds six original, optional multiple-choice transfer tasks linked to the Romance bridge studio. It distinguishes noticing a pattern from applying it indiscriminately, and warns about false friends and reconstructed historical pronunciation. Answers are not stored and are not independent production evidence; mobile QA remains pending.
+
 ## North star
 
 Turn the current Italian-learning feature collection into a coherent learning system. First map knowledge, then measure demonstrated skills, then recommend learning, and only then expand to cross-language comparison.
