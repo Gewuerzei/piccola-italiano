@@ -15,6 +15,7 @@
 - Validation: content contracts plus 38 behavioral checks pass; the parameterized teaching gate covers 432 complete lesson paths. New continuity tests cover history rollover, record-only imports, identity collisions, mixed-plan persistence, source membership, upgrade routing and audio fallback. Real iPhone/device offline and speech verification remain separate.
 - Derive the sidebar version from the runtime version instead of a second hard-coded HTML label.
 - Updated runtime to 0.15.0 and cache to `piccola-italiano-v0151`; all course content is included in the offline asset list.
+- Confirmed successful Pages deployment and live Chrome flows for a new eight-question course, cross-course review through completion, draft/feedback preservation across reload, old course record retention, unchanged whole-course counts after mixed review, and missing-Italian-voice fallback. Verified the latest release shell through the versioned public link; real iPhone/offline behavior remains pending.
 
 ## 0.14.0 · 2026-10-31
 
