@@ -1,18 +1,19 @@
-# PROJECT_HANDOFF · Piccola Italiano v0.13.0
+# PROJECT_HANDOFF · Piccola Italiano v0.14.0
 
 **仓库：** `Gewuerzei/piccola-italiano`，独立于 Cassola 的 `Gewuerzei/-Piccola`。  
 **线上地址：** https://gewuerzei.github.io/piccola-italiano/  
-**当前应用版本：** `0.13.0` · **离线缓存：** `piccola-italiano-v0130`。
+**当前应用版本：** `0.14.0` · **离线缓存：** `piccola-italiano-v0140`。
 
 **施工必读：** [AGENTS.md](AGENTS.md)（行为、安全、测试） → 本文件（实时交接） → [CHANGELOG.md](CHANGELOG.md)（历史） → 读取当前 `main` 源码。禁止凭此文档假定远端代码没有变化。
 
-## 教学架构（S1地图 + S2轻量能力定位）
+## 本轮主线 · 课程骨架与自动教学
 
-- [LEARNING_ARCHITECTURE.md](LEARNING_ARCHITECTURE.md) 定义五层知识、能力证据、价值分类及分期路线。
-- v0.9.0 已编写25个只读知识节点与先修网络、知识卡连接和Latino in tasca发音示例。`curriculumValidate` 对节点ID、先修循环、教材/练习引用做了校验。
-- 地图本身不判定个人能力；v0.10新增可跳过的探索式定位：三方向各4道选择题、按答题表现调节难度，以及一项写作自评。它只是未经心理测量学校准的小规模任务观察，**不是** CEFR 评级，也不能推断真实口语或听力。
-- 实现了暂停续做、本地保存最近8轮结果以及非破坏性备份合并；自由写作原文只用于本轮屏幕自评，不保存或上传。
-- 下一阶段先由用户验收 v0.9 地图与 v0.10 测评的 iPhone 实机表现，继续完善 S3 可解释的学习建议与 S4 比较语言课程，不以此测评宣称完整掌握程度。
+- [COURSE_BLUEPRINT.md](COURSE_BLUEPRINT.md) 固定 40 个稳定课程单元、先修关系、可观察目标及题目契约；`course-data.js` 是可执行目录。34 个主线、6 个自选探索单元；3 个 ready、37 个 planned。它们引用原有全部 25 个知识地图节点，不替换旧 ID。完整骨架不等于完整教材已编写。
+- 首页以“开始自动学习 / 继续学习”为主入口；原有模块保留在“自由探索”和导航中。课程目录可直接查看，未编写单元不伪装成可用课程。
+- 首批 3 节自动课：lo/la/li/le 的性数辨认、上文指代、否定及受限短句改写；36 道原创现在时题，每课 12 题。每轮选 8 道不同题，平衡四个代词；题型从选择到填空、改写。
+- 连续两次无辅助答对增加题目档位；连续卡住补充例句并减少难度。显式提示和自动例句均算辅助；跳过不记错。有限题池的文字表现不推断 CEFR、自由写作、听力或口语能力。
+- 每题保存答案、反馈、提示和输入草稿，可暂停/刷新续做；每轮最多 8 题，重复点击不能重复入账。一次薄弱表现只推荐立即重练一次，随后允许进入下一课；回顾间隔为启发式的 1–2 天。
+- 基础教学架构仍由 [LEARNING_ARCHITECTURE.md](LEARNING_ARCHITECTURE.md) 约束；知识地图、定位、旧版学习建议和跨语探索继续可用。
 
 ## 当前结构
 
@@ -33,14 +34,19 @@
 - `pathway.js` / `pathway.css`：只读个人学习建议，结合先修节点、课程实用性及最近有限测评证据；不修改成绩或复习安排。
 - `bridges.js` / `bridges.css`：只读罗曼语对照，3组同源词和1组功能相近但非同源的必要性句型；标准现代语音依赖设备可用voice，拉丁语仅展示重建IPA。
 - `transfer.js` / `transfer.css`：6道离线语言迁移练习，作答后展示解释与局限；仅页面内暂存，不写入分数或存储。
-- `sw.js`：Service Worker（`piccola-italiano-v0130`）；`manifest.webmanifest`、`icons/`：安装资源。
+- `course-data.js`：40 单元目录、3 节微课、36 道原创题；稳定 ID、先修和能力证据契约。
+- `auto.js`：有限自适应选题、规范化受限答案判定、本机续做、回顾建议和备份校验合并。
+- `auto-view.js` / `auto.css`：首页主入口、单题学习页、反馈/总结、可选完整课程目录。
+- `tests/regression.cjs` / `tests/auto.cjs`：无依赖 Node/VM 验收，分别覆盖旧功能和自动教学。
+- `sw.js`：Service Worker（`piccola-italiano-v0140`）；`manifest.webmanifest`、`icons/`：安装资源。
 
-**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → pathway → bridges → transfer → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
+**加载顺序：** `content → mission → adventure → bank → archaeology → excavation → codex → chancery → vivo → curriculum → placement → pathway → bridges → transfer → course-data → auto → auto-view → app`。以当前 `index.html` 为最终准据；缓存列表须同步。
 
 ## 数据模型与安全
 
 - IndexedDB database `piccola-italiano` / object store `data` / key `state` / schemaVersion `1`；失败时可能回退至 localStorage。
 - 原有学习结构含自建词条、记忆进度、错误记录、练习尝试、会话、驾考任务、自定义导入题库、剧情进度、谜题进度及显示设置。
+- `state.autoTutor = {active, history}` 为可选新增字段，仍在原 schemaVersion 1 内。active 保存 intro/question/feedback、当前题、提示/辅助状态、最多 200 字符草稿和答题证据；history 保存最近 60 轮已完成课程。导出包含完整字段；导入重算正确性、验证题目和时间、去重，不覆盖本机活动课程；本机无活动课程时可以恢复有效备份续做。与旧 XP、复习进度及测评完全独立。
 - `state.placement` 是可选新增字段：`{active,history}`；活动中的答题进度本机持久化，完成记录最多保留8轮。JSON备份合并仅导入经过基本校验的已完成记录，绝不覆盖本机未完成测评，也不保存写作原文。**原有学习成绩、XP和复习安排完全独立。**
 - `state.vivo` 为扩展字段，`records` + `logs`，每个题目第一次通过才增加进度；自由表达是参考样例后自评，填词是规范化严格匹配。旧的 JSON 备份导入可保守合并 vivo 进度；不改变 schemaVersion 1。
 - `state.chancery` 为扩展字段：`cases` + `logs`。每宗卷宗保存已经查看的证据、证词、已完成的条款解码与首次裁决。统计由首次裁决计算，不能反复刷分。
@@ -50,6 +56,8 @@
 - **禁止删除或初始化学习数据来修问题。** 切换缓存版本也不应触及 IndexedDB/localStorage。
 
 ## 已实现的可见功能
+
+- 首页自动教学与 40 单元课程路线；首批 3 节可学、36 题，自适应提示、暂停续做、回顾推荐。
 
 - 生活互动剧情、语言卡片、复习、关联知识库和 Codex 外观主题。
 - 36份词源档案、9宗词源谜题、12道输入式词根挑战。
@@ -66,6 +74,10 @@
 - v0.13新增语言迁移实验室，选择题仅供即时学习，不代表独立产出能力或CEFR水平。
 
 ## 当前限制与后续验收
+
+- v0.14 已通过 30 项 Node/VM 逻辑验收，其中自动教学覆盖 48 轮完整答题路径；内容引用、先修无环、所有 JS 语法及离线资源清单均检查。测试只使用合成学习记录，不读取或提交真实用户备份。
+- 下一批按已固定契约填充基础句、性数与冠词、现在时、提问与否定等先修课程；继续沿用统一引擎，扩充上下文和不同词例。不要再次把首页改回功能入口堆叠。
+- 首批自动课是明确答案的受限文字任务，没有自由对话 AI、语音评分或完整等级判定。其他 37 个单元尚未有自动教学内容。
 
 1. 官方驾考题库的原始 TXT 解析、实际版本和题数，**尚未通过真实文件验证**。不允许做出官方题库已导入的承诺。
 2. 已做过源码语法/模拟流程验收，但不能据此断言 iPhone Safari 的语音、离线更新、存储持久化与全部触控交互已经验收。Italiano Vivo 不是AI批改，自由表达的理解和语法需学习者自己判断。v0.9地图及v0.10测评在iPhone的实机触控、续做、存储、语音及离线缓存仍待验证。

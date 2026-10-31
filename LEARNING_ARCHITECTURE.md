@@ -2,6 +2,12 @@
 
 **Status:** S0 complete; S1 curriculum shipped v0.9.0; limited S2 placement shipped v0.10.0 (2026-10-16). iPhone device QA still open. S3 pathway and an initial S4 comparative studio have shipped; deeper S4 and S5 remain planned.
 
+## Current delivered scope · curriculum freeze and automatic learning
+
+v0.14 (2026-10-31) adds [COURSE_BLUEPRINT.md](COURSE_BLUEPRINT.md) and an executable 40-unit catalogue in `course-data.js`. It preserves all existing map IDs through references and explicitly distinguishes three ready units from 37 planned units. `auto.js` and `auto-view.js` supply the first reusable eight-question lesson loop: explanations, choices, constrained text production, bounded scaffolding, hints, pause/resume and local evidence. The first three lessons contain 36 original direct-object-pronoun questions. Both requested hints and automatic worked examples are assisted practice; neither counts as unaided success.
+
+A completed session is an observation, not mastery or a certified level. Suggestions use one optional immediate repair and heuristic 1–2 day reviews. The engine records no speaking/listening score. The 25-node knowledge graph continues alongside this more detailed authoring catalogue. Follow the frozen contract when filling the remaining units rather than adding independent homepage modules.
+
 ## Current delivered scope · S1
 
 `curriculum.js` defines 25 teaching nodes, five per layer, with prerequisite connections, existing content references and a simple validator. The PWA shows the map through Home and Library, without storing learner scores. `curriculum.css` provides responsive cards. The Latin sound-lab demo shows IPA and modern-language TTS buttons only if corresponding device voices exist. Ancient Latin audio is not fabricated. iPhone PWA/offline/audio device verification is still outstanding.

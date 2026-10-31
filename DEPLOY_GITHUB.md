@@ -8,10 +8,11 @@
 
 1. 读取 `AGENTS.md`、`PROJECT_HANDOFF.md`、`CHANGELOG.md`，核实远端 `main` 最新源码。
 2. 使用有权限的 GitHub 连接器或 Git 工作流更新**本仓库**文件。不能误操作 Cassola 项目的 `Gewuerzei/-Piccola`。
-3. 如修改应用 JS/CSS/HTML 或资源列表，检查 `index.html` 的加载顺序与 `sw.js` 的 ASSETS 缓存清单；需要时更新缓存键以推动离线升级。
-4. 提交到 `main` 后查看 [Actions](https://github.com/Gewuerzei/piccola-italiano/actions)。只有相关 Pages 部署工作流结束且 `conclusion=success`，才写“部署成功”。
-5. 用 Safari 打开线上链接，刷新并确认版本。已安装主屏幕 PWA 可能需关闭重开才能看到新版本。
-6. 离线、数据持久化、语音及设备触控应在 iPhone 上分别实测，不要仅凭 Actions 成功就宣称设备通过。
+3. 运行 `node tests/regression.cjs` 和 `node tests/auto.cjs`，并检查所有 JS 语法；验收应覆盖自动课的答对/错/跳过、辅助证据、续做及备份兼容。
+4. 如修改应用 JS/CSS/HTML 或资源列表，检查 `index.html` 的加载顺序与 `sw.js` 的 ASSETS 缓存清单；需要时更新缓存键以推动离线升级。
+5. 提交到 `main` 后查看 [Actions](https://github.com/Gewuerzei/piccola-italiano/actions)。只有相关 Pages 部署工作流结束且 `conclusion=success`，才写“部署成功”。
+6. 用 Safari 打开线上链接，刷新并确认版本。已安装主屏幕 PWA 可能需关闭重开才能看到新版本。
+7. 离线、数据持久化、语音及设备触控应在 iPhone 上分别实测，不要仅凭 Actions 成功就宣称设备通过。
 
 ## 不可破坏的内容
 

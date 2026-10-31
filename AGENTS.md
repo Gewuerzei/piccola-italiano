@@ -41,14 +41,18 @@ placement.js
 pathway.js
 bridges.js
 transfer.js
+course-data.js
+auto.js
+auto-view.js
 app.js
 ```
 
-`chancery.js` 会向前置种子集合追加内容；`vivo.js` 是离线练习模块；`curriculum.js` 是只读知识地图；`placement.js` 定义可选能力定位；`pathway.js` 根据知识先修和有限测评证据给出可解释建议；`bridges.js` 提供只读的罗曼语比较实验室；`transfer.js` 提供不写入分数的迁移练习；这些模块必须在 `app.js` 之前载入；`app.js` 必须最后加载。保持 `index.html` 与 `sw.js` 中缓存资源清单一致。
+`chancery.js` 会向前置种子集合追加内容；`vivo.js` 是离线练习模块；`curriculum.js` 是只读知识地图；`placement.js` 定义可选能力定位；`pathway.js` 根据知识先修和有限测评证据给出可解释建议；`bridges.js` 提供只读的罗曼语比较实验室；`transfer.js` 提供不写入分数的迁移练习；`course-data.js` 是详细课程与题库，`auto.js` 是自动教学状态机，`auto-view.js` 是对应界面；这些模块必须在 `app.js` 之前载入；`app.js` 必须最后加载。保持 `index.html` 与 `sw.js` 中缓存资源清单一致。
 
 ## 测试与发布原则
 
 - 语法检查覆盖所有 JS；没有验证运行就不能宣称功能验收完成。
+- 可运行 `node tests/regression.cjs` 与 `node tests/auto.cjs` 验证旧模块兼容性及自动教学；它们使用合成记录，不是实机 Safari 验收。课程扩充前读 `COURSE_BLUEPRINT.md`，保留课程/题目 ID 和独立证据类型，更新 `autoValidateContent()` 覆盖。
 - 至少测试正常导航、主题切换、词源返回、案件答案纠错、首次裁决不重复计分、Italiano Vivo 四模式文字交互/首次通关计分、知识地图节点有效性/先修无环/导航及现代语音缺失回退、定位系统难度路径/跳题/写作自评/备份合并/暂停续做与报告诚实性、旧数据保留以及导出/合并逻辑。
 - 有实际运行文件变化时，检查 Service Worker 缓存版本是否需要变更，确保新资源离线可用。**纯文档修改不需要升级缓存。**
 - GitHub Pages 采用 `main` / `/ (root)`；确认最终工作流 `completed / success` 才能宣称成功部署。

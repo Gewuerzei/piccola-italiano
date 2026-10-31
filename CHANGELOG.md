@@ -2,6 +2,16 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.14.0 · 2026-10-31
+
+- Added `COURSE_BLUEPRINT.md` and `course-data.js`: a 40-unit curriculum skeleton with stable IDs, prerequisites, observable goals and links to all 25 existing map nodes. Three units are ready; 37 are explicitly planned. Modern Italian core has 34 units and optional exploration has six.
+- Added three original present-tense micro-lessons for direct object pronouns, contextual reference and negation: 36 questions balanced across lo/la/li/le, recognition, gaps and constrained sentence rewriting.
+- Added `auto.js`, `auto-view.js` and `auto.css`: a primary homepage learning action, one question at a time, concise explanations, hints, bounded adaptive scaffolding, eight-turn sessions, summaries and a read-only full catalogue. Earlier activities remain under an optional exploration section and their existing navigation.
+- Added optional `state.autoTutor` within schema 1 for active lessons, saved feedback/drafts and the latest 60 completed runs. Import revalidates question references and answer evidence, rejects malformed/duplicate records, preserves local active sessions and can restore a valid backup session when none is active.
+- Hints and automatic worked examples are recorded as assisted practice. Skips are not wrong answers; repeat clicks do not earn duplicate evidence. Recognition and constrained writing are separated from unmeasured listening, speaking and free writing. Weak lessons can receive one immediate repeat; review suggestions use a transparent 1–2 day heuristic.
+- Added dependency-free `tests/regression.cjs` and `tests/auto.cjs`: 30 checks pass, including 48 full-session paths, prior-module compatibility, persistence and non-destructive backup merging. Real iPhone Safari/PWA and device offline/audio testing remain separate.
+- Updated application version to 0.14.0 and Service Worker cache to `piccola-italiano-v0140`; all new runtime files are precached. Existing knowledge IDs, progress, IndexedDB and localStorage records are retained.
+
 ## 0.13.0 · 2026-10-16
 
 - Added `transfer.js` / `transfer.css` with six original multiple-choice transfer exercises and explanations of historical sound correspondences, functional grammar comparisons and false friends.
