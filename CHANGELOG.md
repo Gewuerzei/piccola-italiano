@@ -10,6 +10,7 @@
 - Added optional `state.autoTutor` within schema 1 for active lessons, saved feedback/drafts and the latest 60 completed runs. Import revalidates question references and answer evidence, rejects malformed/duplicate records, preserves local active sessions and can restore a valid backup session when none is active.
 - Hints and automatic worked examples are recorded as assisted practice. Skips are not wrong answers; repeat clicks do not earn duplicate evidence. Recognition and constrained writing are separated from unmeasured listening, speaking and free writing. Weak lessons can receive one immediate repeat; review suggestions use a transparent 1–2 day heuristic.
 - Added dependency-free `tests/regression.cjs` and `tests/auto.cjs`: 30 checks pass, including 48 full-session paths, prior-module compatibility, persistence and non-destructive backup merging. Real iPhone Safari/PWA and device offline/audio testing remain separate.
+- Verified the deployed application in Chrome: a complete eight-turn mixed session, adaptive choice-to-text progression, specific error feedback, assisted-answer labeling, skip/summary, catalogue navigation, and draft-preserving pause/reload/resume. Real iPhone device behavior remains unverified.
 - Updated application version to 0.14.0 and Service Worker cache to `piccola-italiano-v0140`; all new runtime files are precached. Existing knowledge IDs, progress, IndexedDB and localStorage records are retained.
 
 ## 0.13.0 · 2026-10-16
