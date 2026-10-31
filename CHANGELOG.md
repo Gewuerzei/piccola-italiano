@@ -2,6 +2,19 @@
 
 历史版本的已完成工作记录。当前功能与施工规则请分别查看 [README](README.md) 和 [AGENTS](AGENTS.md)。
 
+## 0.15.0 · 2026-10-31
+
+- Completed starter micro-lessons for all L1–L3 units: 27 lessons and 324 original questions across the fixed 40-unit catalogue. Added two isolated content files with 24 lessons / 288 questions; retained the original pronoun IDs. Thirteen L4–L5 units remain planned.
+- Generalized adaptive selection from hard-coded pronouns to four named learning focuses per lesson. Each eight-turn session balances objectives, preserves bounded repair, and distinguishes recognition, constrained production, assistance and skipped questions.
+- Added optional mixed review with a persisted eight-question plan drawn from practiced courses, prioritizing recent difficulties and fresh equivalents. Cross-course review does not mark whole courses complete.
+- Added durable per-lesson records alongside the rolling 60-run history. Additive v0.14 recovery and validated backup merging preserve prior course evidence, local active sessions and all legacy schema-1 fields.
+- Generalized question labels and inputs, replaced a growing course-card wall with five collapsible route sections, and added honest practiced/due markers. The homepage retains one primary learning action.
+- Added manually requested Italian system speech for examples and answer feedback, matching available Italian voices and falling back to text without changing evidence. Listening, speaking and free writing remain unmeasured.
+- Accepted harmless nonnumeric commas while preserving grammatical accents and word order. Cross-reviewed both new content packs and corrected legitimate elision/word-order variants and overly broad prompts.
+- Added PROJECT_PLAN and COURSE_AUTHORING to fix product priorities, module boundaries and authoring scope. Added a single `scripts/check.cjs` entry point: content-only validation for course edits; full behavioral validation for runtime/state changes. Reduced recurring handoff material and replaced blanket manual rereview with scope-based work.
+- Validation: content contracts plus 38 behavioral checks pass; the parameterized teaching gate covers 432 complete lesson paths. New continuity tests cover history rollover, record-only imports, identity collisions, mixed-plan persistence, source membership, upgrade routing and audio fallback. Real iPhone/device offline and speech verification remain separate.
+- Updated runtime to 0.15.0 and cache to `piccola-italiano-v0150`; all course content is included in the offline asset list.
+
 ## 0.14.0 · 2026-10-31
 
 - Added `COURSE_BLUEPRINT.md` and `course-data.js`: a 40-unit curriculum skeleton with stable IDs, prerequisites, observable goals and links to all 25 existing map nodes. Three units are ready; 37 are explicitly planned. Modern Italian core has 34 units and optional exploration has six.

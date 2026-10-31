@@ -4,9 +4,11 @@
 
 ## Current delivered scope · curriculum freeze and automatic learning
 
-v0.14 (2026-10-31) adds [COURSE_BLUEPRINT.md](COURSE_BLUEPRINT.md) and an executable 40-unit catalogue in `course-data.js`. It preserves all existing map IDs through references and explicitly distinguishes three ready units from 37 planned units. `auto.js` and `auto-view.js` supply the first reusable eight-question lesson loop: explanations, choices, constrained text production, bounded scaffolding, hints, pause/resume and local evidence. The first three lessons contain 36 original direct-object-pronoun questions. Both requested hints and automatic worked examples are assisted practice; neither counts as unaided success.
+v0.15 (2026-10-31) supplies 27 starter micro-lessons and 324 original questions across all L1–L3 units in the fixed 40-unit catalogue. Thirteen L4–L5 units remain planned. The 25-node knowledge graph remains intact. See [PROJECT_PLAN.md](PROJECT_PLAN.md) for product priorities and [COURSE_AUTHORING.md](COURSE_AUTHORING.md) for the stable authoring interface.
 
-A completed session is an observation, not mastery or a certified level. Suggestions use one optional immediate repair and heuristic 1–2 day reviews. The engine records no speaking/listening score. The 25-node knowledge graph continues alongside this more detailed authoring catalogue. Follow the frozen contract when filling the remaining units rather than adding independent homepage modules.
+The reusable eight-question loop supports explanations, recognition, constrained writing, bounded scaffolding, hints and local pause/resume. Each lesson owns four named learning focuses. Optional mixed review uses evidence from practiced lessons without crediting a whole new lesson. Durable per-lesson records preserve the latest completed course run beyond the rolling 60-session history; backup merging remains additive within schema 1.
+
+A completed session is an observation, not mastery or a certified level. Suggestions use one optional immediate repair and heuristic 1–2 day course reviews. Manual Italian text-to-speech is an example aid, not a listening task or score. Listening, speaking and free production need their own observation methods. The next product milestone prioritizes one complete listening/contextual-expression flow before adding more exploration branches.
 
 ## Current delivered scope · S1
 

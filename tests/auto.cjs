@@ -69,14 +69,14 @@ function sanitized(a, raw, completed = false) {
 
 async function main() {
   let a = await make();
-  const lessons = a.data('AUTO_LESSONS');
+  const lessons = a.data('AUTO_LESSONS.slice().sort((a,b)=>a.order-b.order)');
   assert.ok(lessons.length >= 3);
   const first = lessons[0].id;
 
   await check('Curriculum contract, question references, prerequisites and coverage validate', () => {
     assert.deepEqual(a.data('autoValidateContent()'), []);
     assert.ok(a.run('COURSE_UNITS.length') >= 35);
-    assert.equal(a.run('AUTO_QUESTIONS.length'), 36);
+    assert.ok(a.run('AUTO_QUESTIONS.length') >= lessons.length * 12);
     assert.ok(a.run('COURSE_UNITS.some(unit=>unit.status==="planned")'));
     assert.equal(a.run('autoNewSession("missing-lesson")'), null);
   });
@@ -84,6 +84,8 @@ async function main() {
   await check('Normalization permits harmless formatting while preserving grammar-significant accents', () => {
     assert.equal(a.run('autoNormalize("  LO  COMPRO.  ")'), 'lo compro');
     assert.equal(a.run('autoNormalize("L’ho!")'), "l'ho");
+    assert.equal(a.run('autoNormalize("Sì, lo prendo.")'), a.run('autoNormalize("Sì lo prendo")'));
+    assert.notEqual(a.run('autoNormalize("1,5")'), a.run('autoNormalize("15")'));
     assert.equal(a.run('autoNormalize("e\u0300")'), 'è');
     assert.notEqual(a.run('autoNormalize("è")'), a.run('autoNormalize("e")'));
     assert.notEqual(a.run('autoNormalize("sì")'), a.run('autoNormalize("si")'));
@@ -98,7 +100,7 @@ async function main() {
         assert.equal(new Set(ids).size, 8);
         a.context.__ids = ids;
         const focuses = a.data('__ids.map(id=>autoQuestion(id).focus)');
-        assert.equal(new Set(focuses).size, 4, lesson.id + ': cover all four pronouns');
+        assert.equal(new Set(focuses).size, 4, lesson.id + ': cover all four learning focuses');
         assert.ok(session.level >= 1 && session.level <= 3);
         assert.ok(sanitized(a, session, true), 'valid completed session survives validation');
       }
@@ -126,7 +128,7 @@ async function main() {
     answer(a, 'wrong');
     assert.equal(a.run('__session.level'), 2); assert.equal(a.run('__session.scaffold'), true);
     advance(a);
-    assert.notEqual(a.run('autoCurrent(__session).focus'), bad.focus, 'repair cannot trap learner on one pronoun');
+    assert.notEqual(a.run('autoCurrent(__session).focus'), bad.focus, 'repair cannot trap learner on one focus');
     const unaidedBefore = a.run('autoStats(__session).unaided');
     answer(a);
     assert.equal(a.run('__session.answers.at(-1).hinted'), true, 'worked examples count as assistance');

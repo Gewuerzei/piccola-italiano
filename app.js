@@ -1,6 +1,6 @@
 /* Piccola Italiano · 0.14.0 · local-first, framework-free */
 'use strict';
-const VERSION = '0.14.0';
+const VERSION = '0.15.0';
 const KIND = {word:'词汇',grammar:'语法',sentence:'例句',scene:'会话'};
 const KINDS = {word:'Vocabolario',grammar:'Grammatica',sentence:'Frasi',scene:'Conversazione'};
 const NAV = [
@@ -49,7 +49,7 @@ const EXERCISES = [
 ];
 SEED.push(...EXTRA_SEED.filter(x=>x && typeof x.id==='string'));
 EXERCISES.push(...EXTRA_EXERCISES.filter(x=>x && typeof x.id==='string'));
-const DEFAULT = () => ({schemaVersion:1,autoTutor:{active:null,history:[]},placement:{active:null,history:[]},vivo:{records:{},logs:[]},chancery:{cases:{},logs:[]},customItems:[],progress:{},errors:[],attempts:[],sceneLogs:[],mission:{startedAt:null,checks:{},tests:[]},adventure:{stepWins:{},episodes:{},logs:[]},mysteries:{completed:{},firstSolve:{},logs:[]},settings:{theme:'light'}});
+const DEFAULT = () => ({schemaVersion:1,autoTutor:{active:null,history:[],records:{}},placement:{active:null,history:[]},vivo:{records:{},logs:[]},chancery:{cases:{},logs:[]},customItems:[],progress:{},errors:[],attempts:[],sceneLogs:[],mission:{startedAt:null,checks:{},tests:[]},adventure:{stepWins:{},episodes:{},logs:[]},mysteries:{completed:{},firstSolve:{},logs:[]},settings:{theme:'light'}});
 let db=null, storageMode='indexeddb', state=DEFAULT(), saveChain=Promise.resolve(), toastTimer;
 const ui = {tab:'home',autoOpen:false,autoCatalog:false,libraryKind:'all',search:'',detailId:null,quiz:null,reviewIds:[],reviewIndex:0,revealed:false,sceneId:null,sceneDraft:'',sceneRevealed:false,sceneTurn:0,sceneResponses:[],exam:null,examResult:null,rootsOpen:false,rootsId:null,chanceryId:null,chanceryRoom:'dossier',chanceryHint:null,chanceryFeedback:null,chanceryReturn:null,mysteryId:null,mysteryStage:0,mysterySequence:[],mysteryHint:false,mysteryFeedback:null,curriculumOpen:false,curriculumLevel:'all',curriculumNode:null,placementOpen:false,placementWritingRevealed:false,pathwayOpen:false,bridgeOpen:false,bridgeId:'night',transferOpen:false,transferIndex:0,transferAnswer:null,vivoOpen:false,vivoMode:null,vivoIndex:0,vivoDraft:'',vivoHint:false,vivoFeedback:null};
 const $ = selector => document.querySelector(selector);
@@ -151,7 +151,7 @@ function settings(){const used=state.customItems.length, logs=state.attempts.len
  <div class="notice" style="margin-top:20px">🔐 本版没有账号系统或云同步。卸载应用、清理浏览器网站数据或更换设备都可能导致数据丢失。请定期导出 JSON 备份。安装需要 HTTPS 或 localhost，直接打开 HTML 文件不能完整使用 PWA 离线安装。</div>
  <p class="muted tiny" style="margin-top:14px">存储引擎：${esc(storageMode)} · 仅加载本地代码和内置示例，无网络 API 请求。</p>`}
 function render(){renderNav();applyTheme();let html='';if(ui.autoOpen)html=autoView();else if(ui.transferOpen)html=transferView();else if(ui.bridgeOpen)html=bridgeView();else if(ui.pathwayOpen)html=pathwayView();else if(ui.placementOpen)html=placementView();else if(ui.detailId)html=detail();else if(ui.tab==='home')html=home();else if(ui.tab==='library')html=ui.rootsOpen?archaeologyView():ui.curriculumOpen?curriculumView():library();else if(ui.tab==='practice')html=practice();else if(ui.tab==='mission')html=ui.examResult?missionExamResultView():missionView();else if(ui.tab==='review')html=review();else html=settings();$('#view').innerHTML=html;updateStorageStatus()}
-function nav(id){if(ui.autoOpen)autoCaptureDraft();ui.vivoOpen=false;ui.vivoMode=null;vivoReset();ui.chanceryId=null;ui.chanceryReturn=null;if(ui.exam && id!=='mission'){toast('模拟考试进行中，请先交卷或放弃。');return}ui.tab=id;ui.autoOpen=false;ui.autoCatalog=false;ui.detailId=null;ui.placementOpen=false;ui.placementWritingRevealed=false;ui.pathwayOpen=false;ui.bridgeOpen=false;ui.transferOpen=false;ui.curriculumOpen=false;ui.curriculumNode=null;ui.quiz=null;ui.sceneId=null;ui.adventureId=null;ui.mysteryId=null;ui.rootsOpen=false;ui.rootsId=null;ui.reviewIds=[];ui.reviewIndex=0;ui.revealed=false;render();window.scrollTo(0,0)}
+function nav(id){if(ui.autoOpen){autoCaptureDraft();autoStopSpeech();}ui.vivoOpen=false;ui.vivoMode=null;vivoReset();ui.chanceryId=null;ui.chanceryReturn=null;if(ui.exam && id!=='mission'){toast('模拟考试进行中，请先交卷或放弃。');return}ui.tab=id;ui.autoOpen=false;ui.autoCatalog=false;ui.detailId=null;ui.placementOpen=false;ui.placementWritingRevealed=false;ui.pathwayOpen=false;ui.bridgeOpen=false;ui.transferOpen=false;ui.curriculumOpen=false;ui.curriculumNode=null;ui.quiz=null;ui.sceneId=null;ui.adventureId=null;ui.mysteryId=null;ui.rootsOpen=false;ui.rootsId=null;ui.reviewIds=[];ui.reviewIndex=0;ui.revealed=false;render();window.scrollTo(0,0)}
 function grade(id,correct,question='',source='practice'){
   const time=Date.now(), old=state.progress[id]||{ease:2.3,repetitions:0,intervalDays:0,correct:0,wrong:0};let p={...old};
   if(correct){p.repetitions+=1;p.intervalDays=p.repetitions===1?1:p.repetitions===2?3:Math.max(4,Math.round((p.intervalDays||3)*p.ease));p.ease=Math.min(3.2,p.ease+.05);p.correct+=1;for(const error of state.errors)if(error.itemId===id&&!error.resolvedAt)error.resolvedAt=time}

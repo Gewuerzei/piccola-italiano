@@ -269,3 +269,10 @@ const AUTO_QUESTIONS = [
     answers:['Non le preparo.'],answerLabel:'Non le preparo.',explanation:'le verdure 是阴性复数，用 le；完整句子是 Non le preparo。',hint:'顺序是 Non，然后是代词，最后是 preparo。',focus:'le',evidence:'controlled_production'
   }
 ];
+
+// The original pronoun lesson IDs and question IDs remain stable across releases.
+for (const lesson of AUTO_LESSONS) {
+  lesson.order = COURSE_UNITS.findIndex(unit => unit.id === lesson.unitId) + 1;
+  lesson.focusLabels = {lo: '阳性单数宾语', la: '阴性单数宾语', li: '阳性复数宾语', le: '阴性复数宾语'};
+  lesson.speech = lesson.example.it.replace(/\s*→\s*/g, '. ');
+}
