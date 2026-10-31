@@ -1,4 +1,4 @@
-/* Piccola Italiano · 0.14.0 · local-first, framework-free */
+/* Piccola Italiano · 0.15.0 · local-first, framework-free */
 'use strict';
 const VERSION = '0.15.0';
 const KIND = {word:'词汇',grammar:'语法',sentence:'例句',scene:'会话'};
@@ -220,7 +220,7 @@ function action(e){const btn=e.target.closest('[data-action]');if(!btn)return;co
   case 'persist':persist();break;
   default:if(!autoAction(name,btn)&&!transferAction(name,btn)&&!bridgeAction(name,btn)&&!pathwayAction(name,btn)&&!placementAction(name,btn)&&!curriculumAction(name,btn)&&!vivoAction(name,btn)&&!chanceryAction(name,btn)&&!archaeologyAction(name,btn)&&!adventureAction(name,btn)&&!bankAction(name,btn))missionAction(name,btn);break;
  }}
-async function main(){await bootStorage();autoRestore();applyTheme();render();document.addEventListener('click',action);$('#theme-btn').addEventListener('click',()=>{state.settings.theme=state.settings.theme==='light'?'dark':state.settings.theme==='dark'?'codex':'light';save();render()});$('#add-form').addEventListener('submit',e=>{e.preventDefault();addItem(e.target)});
+async function main(){await bootStorage();autoRestore();applyTheme();const versionLabel=$('#app-version');if(versionLabel)versionLabel.textContent='v'+VERSION+' · Impara con Piccola';render();document.addEventListener('click',action);$('#theme-btn').addEventListener('click',()=>{state.settings.theme=state.settings.theme==='light'?'dark':state.settings.theme==='dark'?'codex':'light';save();render()});$('#add-form').addEventListener('submit',e=>{e.preventDefault();addItem(e.target)});
  document.addEventListener('input',e=>{if(e.target.id==='auto-answer'){autoCaptureDraft(e.target.value);save();return}if(e.target.id==='library-search'){const pos=e.target.selectionStart;ui.search=e.target.value;const grid=$('#library-grid');const needle=ui.search.toLowerCase();const items=allItems().filter(item=>(ui.libraryKind==='all'||item.kind===ui.libraryKind)&&[item.title,item.meaning,item.example,...(item.tags||[])].join(' ').toLowerCase().includes(needle));if(grid)grid.innerHTML=items.length?items.map(itemCard).join(''):'<div class="empty">没有找到匹配的内容。</div>';const counter=e.target.parentElement.querySelector('span');if(counter)counter.textContent=`共 ${items.length} 项`;try{e.target.setSelectionRange(pos,pos)}catch{}}});
  document.addEventListener('submit',e=>{if(e.target.id==='auto-answer-form'){e.preventDefault();autoAction('auto-submit',{dataset:{id:e.target.dataset.id}})}});
  if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker registration failed:',err));

@@ -2,7 +2,7 @@
 
 **仓库：** `Gewuerzei/piccola-italiano`，与 Cassola 的 `Gewuerzei/-Piccola` 完全独立。
 **应用：** https://gewuerzei.github.io/piccola-italiano/
-**运行版本：** `0.15.0` · **缓存：** `piccola-italiano-v0150` · **数据 schema：** `1`。
+**运行版本：** `0.15.0` · **缓存：** `piccola-italiano-v0151` · **数据 schema：** `1`。
 
 源码是实际状态来源。施工先确认远端 main，再按改动范围读相关文件；不要每轮重读所有模块和全部版本历史。
 

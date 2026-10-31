@@ -13,7 +13,8 @@
 - Accepted harmless nonnumeric commas while preserving grammatical accents and word order. Cross-reviewed both new content packs and corrected legitimate elision/word-order variants and overly broad prompts.
 - Added PROJECT_PLAN and COURSE_AUTHORING to fix product priorities, module boundaries and authoring scope. Added a single `scripts/check.cjs` entry point: content-only validation for course edits; full behavioral validation for runtime/state changes. Reduced recurring handoff material and replaced blanket manual rereview with scope-based work.
 - Validation: content contracts plus 38 behavioral checks pass; the parameterized teaching gate covers 432 complete lesson paths. New continuity tests cover history rollover, record-only imports, identity collisions, mixed-plan persistence, source membership, upgrade routing and audio fallback. Real iPhone/device offline and speech verification remain separate.
-- Updated runtime to 0.15.0 and cache to `piccola-italiano-v0150`; all course content is included in the offline asset list.
+- Derive the sidebar version from the runtime version instead of a second hard-coded HTML label.
+- Updated runtime to 0.15.0 and cache to `piccola-italiano-v0151`; all course content is included in the offline asset list.
 
 ## 0.14.0 · 2026-10-31
 

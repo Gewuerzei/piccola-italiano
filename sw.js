@@ -1,6 +1,6 @@
 /* Piccola Italiano v0.15.0 - offline app shell, no remote dependencies */
-const CACHE = 'piccola-italiano-v0150';
-const ASSETS = ['./', './index.html', './styles.css', './vivo.css?v=080', './curriculum.css?v=090', './placement.css?v=0100', './pathway.css?v=0110', './bridges.css?v=0120', './transfer.css?v=0130', './app.js?v=0150', './content.js?v=071', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './chancery.js', './vivo.js?v=080', './curriculum.js?v=090', './placement.js?v=0100', './pathway.js?v=0110', './bridges.js?v=0120', './transfer.js?v=0130', './course-data.js?v=0150', './course-foundations.js?v=0150', './course-connected.js?v=0150', './auto.js?v=0150', './auto-view.js?v=0150', './auto.css?v=0150', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+const CACHE = 'piccola-italiano-v0151';
+const ASSETS = ['./', './index.html', './styles.css', './vivo.css?v=080', './curriculum.css?v=090', './placement.css?v=0100', './pathway.css?v=0110', './bridges.css?v=0120', './transfer.css?v=0130', './app.js?v=0151', './content.js?v=071', './mission.js', './adventure.js', './bank.js', './archaeology.js', './excavation.js', './codex.js', './chancery.js', './vivo.js?v=080', './curriculum.js?v=090', './placement.js?v=0100', './pathway.js?v=0110', './bridges.js?v=0120', './transfer.js?v=0130', './course-data.js?v=0150', './course-foundations.js?v=0150', './course-connected.js?v=0150', './auto.js?v=0150', './auto-view.js?v=0150', './auto.css?v=0150', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });

@@ -8,6 +8,8 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const packs = [...html.matchAll(/<script\b[^>]*\bsrc="\.\/(course-[^"?]+\.js)(?:\?[^" ]*)?"/g)].map(match => match[1]);
 assert.ok(packs.includes('course-data.js'), 'base curriculum must load');
+const diskPacks = fs.readdirSync(root).filter(file => /^course-[a-z-]+\.js$/.test(file));
+assert.deepEqual([...packs].sort(), diskPacks.sort(), 'every course file must be included exactly once in index.html');
 const context = vm.createContext({});
 for (const file of ['curriculum.js', ...packs, 'auto.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
